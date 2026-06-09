@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+    *{margin: 0; padding: 0;}
+    header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        color: white;
+        width: 100%;
+        height: 30px;
+        position: fixed;
+        margin: 0 auto;
+    }
+    .logo{
+        /* background-color: blueviolet; */
+        width: 25%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        /* background-color: aqua; */
+        width: 50%;
+        height: 100%;
+    }
+    .kor{
+        width: 25%;
+        height: 100%;
+        /* background-color: aquamarine; */
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding-right: 20px;
+    }
+    /* ------------header 종료----------------- */
+
+    /*-----------clc시작------------------------*/
+    .clcBox {
+        width: 40px;
+        height: 150px;
+        /* background-color: blue; */
+        position: fixed;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .clcBox a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        background-color: brown;
+        border-radius: 50%;
+        text-align: center;
+    }
+    /*-----------clc종료--------------*/
+
+    /*-----------section시작--------------*/
+    section{
+        /* px,%,vh,vw,rm,rem */
+       width: 100%;
+       height: 100vh;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+    }
+      section div{
+        width: 50%;
+        padding: 10px;
+        background-color: white;
+      }
+      section > div > h2{
+        color: red;
+        text-align: center;
+      }
+      section > div > p{
+        color: rgb(142, 40, 238);
+        text-align: center;
+      }
+
+      #box1{
+        background-color: peru;
+       } 
+       #box2{
+        background-color: burlywood;
+       } 
+       #box3{
+        background-color: bisque;
+       }
+    /*-----------section시작--------------*/
+    </style>
+</head>
+<body>
+    <!-- header시작 -->
+    <header>
+        <div class="logo">logo</div>
+        <ul class="nav">
+          <li><a href="#box1">html</a></li>
+          <li><a href="#box2">css</a></li>
+          <li><a href="#box3">javaScript</a></li>
+        </ul>
+        <div class="kor">kor</div>
+    </header>
+    <!-- header종료 -->
+
+    <!-- clc 시작 -->
+    <div class="clcBox">
+        <a  href="#box1"></a>
+        <a  href="#box2"></a>
+        <a  href="#box3"></a>
+    </div>
+    <!-- clc 종료 -->
+
+    <!-- section 시작 -->
+    <section id="box1">
+        <div>
+            <h2>html관련내용</h2>
+            <p>html는 인터넷 문서로서 .......</p>
+        </div>
+    </section>
+    <section id="box2"> 
+        <div>
+            <h2>css관련내용</h2>
+            <p>css는 태그를 디자인하는 언어.......</p>
+        </div>
+    </section>
+    <section id="box3">
+        <div>
+            <h2>javaScript관련내용</h2>
+            <p>javaScript는 태그를 동적으로.......</p>
+        </div>
+    </section>
+    <!-- section 종료 -->
+</body>
+</html>

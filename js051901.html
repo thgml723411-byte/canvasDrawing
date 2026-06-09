@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성자함수</title>
+</head>
+<body>
+    <!--
+      영화표 예매
+      5개의 영화중 선택하면
+      영화이름,할인적용된 금액, 총 지급액 표시
+      영화금액 : 11,000원
+      조건 : 청소년은30% 할인 국가유공자 50% 경로우대 20% 할인 일반 : 할인없음 클래스 이용
+      힌트 : 변수에다가푸시를집어넣을때객체로넣을수있음 ex)movie.push({name : '아바타',금액 : 3000})
+     -->
+    <h1>영화표 예매</h1>
+    <div class="outBox">
+        <h2>상영 영화 </h2>
+        <!-- <div>에<img>이미지넣어서도할수있음 -->
+        <label>
+            <input type="radio" name="items" value="기생충" />
+            기생충
+        </label>
+        <label>
+            <input type="radio" name="items" value="군체" />
+            군체
+        </label>
+        <label>
+            <input type="radio" name="items" value="악마는프라다를입는다" />
+            악마는프라다를입는다
+        </label>
+        <label>
+            <input type="radio" name="items" value="마이클잭슨" />
+            마이클잭슨
+        </label>
+        <label>
+            <input type="radio" name="items" value="아바타" />
+            아바타
+        </label>
+        
+        <h2>할인 대상자</h2>
+        <label>
+            <input type="radio" name="" value="청소년" />
+            청소년
+        </label>
+        <label>
+            <input type="radio" name="" value="국가유공자" />
+            국가유공자
+        </label>
+        <label>
+            <input type="radio" name="" value="경로우대" />
+            경로우대
+        </label><br>
+        <button onclick="showItems()">선택</button>
+    </div>
+
+    <div class="dis"></div>
+    <div id="total"></div>
+
+    <script>
+        class Items{
+           constructor(name,price){
+            this.name = name
+            this.price = price
+           }
+           discount(){
+            return this.price*0.9
+           }
+        }
+        //값을배열로
+        let cart = []
+        //클릭할때함수가없으니만들러옵니다
+        function showItems(){
+            let seleItem = document.querySelector('input[name="items"]:checked')//괄호안에속성을넣을것[]//대고들어와
+            let dis = document.querySelector('.dis')
+            let total = document.querySelector('#total')
+
+            //에러도생각해야함
+            if(!seleItem){
+                dis.innerHTML = '영화를 선택해주세요'
+                return
+            }
+            
+            //일일이하기보다는실지적으로대량의파일을갖고오는것
+            let item
+          if(seleItem.value === '기생충'){
+              item = new Items('기생충',11000)
+          }else if(seleItem === '악마는프라다를입는다'){
+            item = new Items('악마는프라다를입는다',11000)
+          }else if(seleItem === '아바타'){
+            item = new Items('아바타',11000)
+          }else if(seleItem.value === '군체'){
+            item = new Items('군체',11000)
+          }else if(seleItem.value === '마이클잭슨'){
+            item = new Items('마이클잭슨',11000)
+          }
+            cart.push(item)
+             let display = ''
+             let sum = 0
+            cart.forEach(function(it){
+                display += `<div> 영화명 : ${it.name}<br> 원가 : ${it.price}원<br> 할인가 : ${it.discount()}원<br> </div>`
+                sum += it.discount()
+            })
+            dis.innerHTML = display
+            total.innerHTML = `총금액 : ${sum}원`
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise </title>
+</head>
+<body>
+    <div class="dis" id="dis"></div>
+  <script>
+    function Item(){
+        return fetch ("data2.json")
+        .then((res)=>{
+          return res.json()
+        })
+    }
+    Item()
+    .then((data)=>{
+        let dis = document.querySelector("#dis")
+        let html = ''
+        data.forEach((item)=>{
+           html += `${item.image} ${item.title} ${item.description} <br>`
+        })
+        dis.innerHTML = html 
+    })
+    .catch((err)=>{
+        console.error("오류",err)
+    })
+  </script>
+</body>
+</html>

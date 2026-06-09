@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.outbox{ 
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 500px;
+    height: 120px;
+    /* background-color: rgba(157, 210, 245, 0.925); */
+}
+.inbox{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* background-color: rgba(81, 179, 245, 0.925); */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0,0.2);
+    color: rgb(24, 25, 26);
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100px;
+    transition: all 1s;
+}
+
+.inbox:hover{
+    border-radius: 50px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0,0.6);
+}
+</style>
+<body>
+    <div class="outbox">
+       <div class="inbox">1</div>
+       <div class="inbox">2</div>
+       <div class="inbox">3</div>
+       <div class="inbox">4</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영상</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+        .wrap{
+            /* 동영상크기조절 */
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .wrap video{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            position: absolute;
+            left: 0; top: 0;
+
+            
+           /* display: none; 3마리가안보일때 */
+             opacity: 0;
+             transition: all 0.3s;
+        }
+        .wrap video.on{
+            /* display: block; 온이라고붙어있을때만보이게하는 */
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <!-- 4가지옵션기본적 음속어,끝임없어돌아가는무한루프 -->
+      <video  muted playsinline>
+        <source src="./video/Aurora.mp4" type="video/mp4"><!-- 서비스:비디오확장자소스에따라속도type명령어 -->
+      </video>
+      <video  muted playsinline>
+        <source src="./video/Aurora2.mp4">
+      </video>
+    </div>
+    <script>
+        let video = document.querySelectorAll('video')
+        let index = 0
+
+        //온을붙여서
+        video[index].classList.add('on')
+        video[index].play()
+
+        setInterval(function(){
+           video[index].pause()
+           video[index].classList.remove('on')
+           
+
+           index++
+
+           //마지막이넘으면처음으로
+           if(index>=video.length){
+             index = 0
+           }
+           //현재영상플레이위치를처음으로설정
+           video[index].currentTime=0
+           video[index].classList.add('on')
+           video[index].play()
+        },4000)
+    </script>
+</body>
+</html>

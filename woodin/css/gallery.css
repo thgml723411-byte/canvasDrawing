@@ -1,0 +1,368 @@
+html{
+  scroll-behavior: smooth;
+}
+body{
+   background-color: rgb(236, 236, 236);
+   z-index: -100;
+   
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+ header{
+    width: 100%;
+    height: 100px;
+    color: rgb(78, 78, 78);
+ }
+ nav{
+    width: 100%;
+    height: 85px;
+    overflow: hidden;
+    position: fixed;
+    top: 0; left: 0;
+    display: flex;
+    justify-content: center;
+    /* align-items:center; */
+    background-color: rgba(236, 236, 236,0.8);
+    transition: all 0.3s;
+    z-index: 10;
+ }
+  nav.on{
+    height: 420px;
+ }
+ .logo{
+  margin-right: 100px;
+    width: 150px;
+    height: 85px;
+    background-image: url(/img/imgi_16_logo.png);
+    background-position: center;
+   background-repeat: no-repeat;
+   background-size: contain;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+    /* border: 1px solid red; */
+ }
+  .gnb{
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    height: 95px;
+    /* background-color: rgb(238, 108, 108); */
+    display: flex;
+    justify-content: center;
+ }
+ .nav>a{
+  /* margin-right: 100px; */
+    width: 15%;
+    height: 85px;
+     /* border: 1px solid red; */
+ }
+ .gnb > li{
+    width: calc(100%/4);
+    height: 100%;
+ }
+  .gnb > li > a{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 400;
+    /* background-color: red; */
+ }
+ .gnb > li > a:hover{
+    font-weight: 500;
+ }
+ .snb{
+       margin-top: 20px;
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 30px;
+        /* background-color: rgb(214, 214, 214); */
+        }
+.snb > li{
+      font-size: 18px;
+        }
+
+.snb > li:hover{
+        color: rgb(67, 107, 77);
+     }
+section{
+    width: 100%;
+    height: calc(100vh - 95px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+    font-weight: bold;
+        }
+section.on{
+    display: flex;
+      }
+ .HAMBURGER{
+    width: 5%;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* background-color: rgba(83, 186, 255, 0.822); */
+ }
+ .cicircle{
+  width: 30px;
+  height: 30px;
+  gap: 7px;
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  flex-wrap: wrap;
+  /* background-color: rgb(255, 0, 0); */
+ }
+ .one{
+  gap: 15px;
+  position: absolute;
+  display: flex;
+ }
+ .two{
+  margin-top: 23px;
+  gap: 15px;
+  position: absolute;
+  display: flex;
+ }
+ .HAMBURGER span{
+    width: 8px;
+    height:8px;
+    border-radius: 50%;
+    background-color: rgb(65, 65, 65);
+    transition: all 0.3s;
+ }
+ /* 여기부터 풀메뉴 */
+ .fullMenu{
+    width: 100%;
+    height: 0;
+    background-color: rgba(15, 15, 15, 0.8);
+    color: rgb(235, 235, 235);
+    position: fixed;
+    left: 0;
+    top: -100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.3s;
+     
+ }
+.fullMenu.on{
+    top: 0;
+    height: 100vh;
+    display: flex;
+}
+.fullGnb{
+    width: 65%;
+    height: 70%;
+    margin-top: 60px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    /* border: 1px solid red; */
+}
+.fullGnb>li{
+    width: calc(100%/4);
+    height: 100%;
+    font-size: 2px;
+     /* border: 1px solid red; */
+    
+}
+.fullGnb>li>a{
+    width: 100%;
+    height: 20%;
+    font-size: 40px;
+    font-weight: 300;
+    cursor: pointer;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+     /* background-color: rgb(255, 38, 0); */
+}
+.fullSnb{
+    width: 100%;
+    height: 80%;
+    font-size:25px ;
+    font-weight: 200;
+    cursor: pointer;
+     display:flex ;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(235, 235, 235);
+    gap: 10px;
+}
+.fullSnb>li>a:hover{
+  color: rgb(80, 146, 96);
+}
+.closeBtn{
+    position: absolute;
+    right: 170px;
+    top: 45px;
+    width: 30px;
+    height: 30px;
+    font-size: 45px;
+    /* border: 1px solid red; */
+    cursor: pointer;
+}
+/* 화면의 시작 */
+.wide1{
+    margin-top: -40px;
+   width: 100%;
+   height: 300vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.whiteBox{
+    width: 95%;
+   height: 95%;
+   background-color: rgb(247, 247, 247);
+   border-radius: 10px;
+   display: flex;
+   justify-content: start;
+   align-items: center;
+   flex-direction: column;
+   /* border: 1px solid red; */
+}
+.textBox{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+   align-items: center;
+    width: 100%;
+    height: 100px;
+    /* border: 1px solid red; */
+    font-family: "Nanum Gothic", sans-serif;
+}
+.collect{
+     font-size: 55px;
+    font-weight: 500;
+    text-align: center;
+    font-family: "Nanum Gothic", sans-serif;
+}
+.collect2{
+     font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    
+    font-family: "Nanum Gothic", sans-serif;
+}
+.imgBoxGallery{
+    margin-top: 60px;
+    width: 75%;
+    height: 95%;
+    /* background-color: aqua; */
+    
+}
+.galleryBox{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    /* border: 1px solid red; */
+}
+.grr{
+    transition: all 0.5s;
+    height:600px;
+    border-radius: 10px;
+    background-image: url(/img/gallery1.jpg);
+    background-color: aqua;
+}
+.grr:hover{
+    filter: brightness(50%);
+}
+.grr:nth-child(2){
+    background-image: url(/img/gallery2.jpg);
+}
+.grr:nth-child(2):hover{
+    filter: brightness(50%);
+}
+.grr:nth-child(3){
+    background-image: url(/img/gallery3.jpg);
+}
+.grr:nth-child(4){
+    background-image: url(/img/gallery4.jpg);
+}
+.grr:nth-child(5){
+    background-image: url(/img/gallery5.jpg);
+}
+.grr:nth-child(6){
+    background-image: url(/img/gallery6.jpg);
+}
+.grr:nth-child(7){
+    background-image: url(/img/gallery7.jpg);
+}
+.grr:nth-child(8){
+    background-image: url(/img/gallery8.jpg);
+}
+.grr:nth-child(9){
+    background-image: url(/img/gallery9.jpg);
+}
+.grr:nth-child(10){
+    background-image: url(/img/gallery10.jpg);
+}
+.grr:nth-child(11){
+    background-image: url(/img/gallery12.jpg);
+}
+
+
+
+footer{
+  width: 100%;
+  height: 200px;
+  background-color: black;
+  padding: 50px;
+  display: flex;
+    justify-content: start;
+  align-items: start;
+}
+.LastBox{
+  gap: 20px;
+  width: 50%;
+  height: 80%;
+  display: flex;
+  justify-content: start;
+  /* background-color: aqua; */
+}
+.ma{
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 10%;
+  height: 80%;
+  /* border: 1px solid red; */
+  background-image: url(/img/imgi_16_logo_p.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 70%;
+  margin-right: 20px;
+}
+.lastOne{
+
+  width: 1px;
+  height: 100px;
+  background-color: rgb(199, 199, 199);
+}
+.lastOne2{
+  color: rgb(175, 175, 175);
+  font-weight: 200;
+  font-family: "Nanum Gothic", sans-serif;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+</head>
+<body>
+    <!-- 숫자가나열되어있고숫자를클릭하면양수인지음수인지판별구현 -->
+   <div class="b">-1</div> 
+   <div class="b">2</div> 
+   <div class="b">3</div>
+   <div class="b">-4</div>  
+   <div class="dis">여기에음수인지양수인지출력</div>
+
+   <script>
+      let items = document.querySelectorAll(".b")
+      let dis = document.querySelector(".dis")
+
+      items.forEach(function(num){
+          num.addEventListener("click", function(){
+              let nums = num.innerHTML
+              if( Number(nums) >=0){
+                dis.innerHTML = `양수`
+              }else{
+                dis.innerHTML = '음수'
+              }
+          })
+      })
+   </script>
+</body>
+</html>

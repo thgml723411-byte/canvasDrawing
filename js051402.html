@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+<script>
+    //함수를 이용합니다 강아지 정보를 입력하고
+    //리턴을 받아서, 함수를 호출하였을때
+    //sound() :: '멍멍'이라고 출력하고
+    //run() :: '달립니다' 글자를 출력
+    //먼저펑션부터만들지않고렛부터만든다
+    let dogs = function(){
+          return {
+            name : 'happy',
+            color : 'white',
+            sound:function(){
+               document.write('멍멍'+'<br>')
+            },
+            run:function(){
+                document.write('달립니다'+'<br>')
+            }
+          } //객체사용//키와값
+    }
+    let dogs = dog()
+    document.write(`${dogs.name}가 지금`)  
+    dogs.sound()
+    dogs.run()
+</script>
+</body>
+</html>

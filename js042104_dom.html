@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+<h1>BMI 판정</h1>
+
+<label for="cm">키 :</label>
+<input id="cm" type="number" placeholder="키를 입력하시오(cm)"/ ><br>
+<label for="kg">몸무계 :</label>
+<input id="kg" type="number" placeholder="몸무게를 입력하시오(kg)"/>
+<button id="btn">bmi 확인</button>
+<div id="ans">정상입니다 과체중입니다 표시 자리 입니다</div>
+
+<script>
+    let cm = document.getElementById('cm')
+    let kg = document.getElementById('kg')
+    let btn = document.getElementById('btn')
+    let ans = document.getElementById('ans')
+
+    btn.onclick = function(){
+    let bmi = Number(kg.value) / ( (Number(cm.value)*0.1) * (Number(cm.value )*0.1) )*100
+    //첫번째괄호는공식두번째괄호는우선순위때매괄호를했음
+    //if(bmi >= 22.9)
+    console.log(bmi)
+    if(bmi>=23){
+        ans.innerHTML='과체중 또는 비만입니다'
+    }else{
+        ans.innerHTML='정상체중 또는 저체중입니다'
+    }//if문종료
+
+
+    }//btn.onclick 끝나는 자리 괄호안에 모든 자료 소멸
+    
+//let bmi = Number(kg.value) / ( (Number(cm.value)*0.1) * (Number(cm.value )*0.1) )*100
+//if((bmi*100)>=23) or if(bmi>=0.23)
+</script>
+
+</body>
+</html>

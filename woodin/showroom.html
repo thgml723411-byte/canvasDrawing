@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/showroom.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cherry+Bomb+One&family=Gugi&family=Jua&family=Major+Mono+Display&family=Noto+Sans+KR:wght@100..900&family=Orbit&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <nav class="nav">
+    <a href="./index.html"><div class="logo" href="./index.html"></div></a>
+    <!-- 여기부터  -->
+    <ul class="gnb">
+        <!-- 브랜드의 구역 -->
+        <li>
+            <a href="./subBrand.html">브랜드</a>
+                <ul class="snb">
+                    <li><a href="./subBrand.html" onclick="showPage(1)">브랜드스토리</a></li>
+                    <li><a href="./certified.html" onclick="showPage(2)">연혁 및 인증</a></li>
+                    <li><a href="#" onclick="showPage(3)">CI$BI</a></li>
+                    <li><a href="#" onclick="showPage(4)">오시는 길</a></li>
+                </ul>
+        </li>
+        <!-- 스토리의 구역 -->
+         <li>
+            <a href="./story.html" onclick="showPage(5)">스토리</a>
+                <ul class="snb">
+                    <li><a href="#" onclick="showPage(6)">미디어</a></li>
+                    <li><a href="#" onclick="showPage(7)">홍보</a></li>
+                    <li><a href="#" onclick="showPage(8)">협찬</a></li>
+                    <li><a href="#" onclick="showPage(9)">이벤트</a></li>
+                </ul>
+        </li>
+        <!-- 갤러리 구역 -->
+         <li>
+            <a href="./gallery.html" onclick="showPage(10)">갤러리</a>
+                <ul class="snb">
+                    <li><a href="#" onclick="showPage(11)">컬렉션</a></li>
+                    <li><a href="#" onclick="showPage(12)">인테리어</a></li>
+                    <li><a href="#" onclick="showPage(13)">익스테리어</a></li>
+                </ul>
+        </li>
+        <!-- 쇼룸의 페이지 -->
+         <li>
+            <a href="./showroom.html" onclick="showPage(14)">쇼룸</a>
+                <ul class="snb">
+                    <li><a href="#" onclick="showPage(15)">전시장</a></li>
+                </ul>
+        </li>
+    </ul>
+    <!-- 햄버거바의 자리 -->
+    <div class="HAMBURGER">
+        <div class="cicircle">
+            <div class="one">
+                <span></span>
+                <span></span>
+            </div>
+       
+        <div class="two">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    </nav>
+    </header>
+<!-- 햄버거바의 풀메뉴 -->
+ 
+<div class="fullMenu">
+        <div class="closeBtn">X</div>
+    <ul class="fullGnb">
+            <li>
+                <a href="./subBrand.html" onclick="showPage(0)">브랜드</a>
+                <ul class="fullSnb">
+                    <li><a href="./subBrand.html" onclick="showPage(1)">브랜드스토리</a></li>
+                    <li><a href="./certified.html" onclick="showPage(2)">연혁 및 인증</a></li>
+                    <li><a href="#" onclick="showPage(3)">CI$BI</a></li>
+                    <li><a href="#" onclick="showPage(4)">오시는 길</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="./story.html" onclick="showPage(5)">스토리</a>
+                <ul class="fullSnb">
+                    <li><a href="#" onclick="showPage(6)">미디어</a></li>
+                    <li><a href="#" onclick="showPage(7)">홍보</a></li>
+                    <li><a href="#" onclick="showPage(8)">협찬</a></li>
+                    <li><a href="#" onclick="showPage(9)">이벤트</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="./gallery.html" onclick="showPage(10)">갤러리</a>
+                <ul class="fullSnb">
+                    <li><a href="#" onclick="showPage(11)">컬렉션</a></li>
+                    <li><a href="#" onclick="showPage(12)">인테리어</a></li>
+                    <li><a href="#" onclick="showPage(13)">익스테리어</a></li>
+                </ul>
+            </li>
+
+             <li>
+                <a href="#" onclick="showPage(14)">쇼룸</a>
+                <ul class="fullSnb">
+                    <li><a href="#" onclick="showPage(15)">전시장</a></li>
+                </ul>
+            </li>
+
+    <div class="wrap">
+        <section id="brand1"></section>
+        <section id="brand2"></section>
+        <section id="brand3"></section>
+        <section id="brand4"></section>
+        <section id="brand5"></section>
+        <section id="story1"></section>
+        <section id="story2"></section>
+        <section id="story3"></section>
+        <section id="story4"></section>
+        <section id="story5"></section>
+        <section id="gallery1"></section>
+        <section id="gallery2"></section>
+        <section id="gallery3"></section>
+        <section id="gallery4"></section>
+        <section id="show1"></section>
+        <section id="show2"></section>
+        <section id="show3"></section>
+    </div>
+</div>
+</div>
+<!-- 화면의 시작부분 -->
+<div class="wide1">
+    <div class="whiteBox">
+        <div class="imgWide1">
+            <div class="textBox">
+            <span class="collect">SHOWROOM<span class="collect2">쇼룸</span></span>
+            </div>
+        <!-- 이미지 시작 -->
+            <div class="bigImage1Box">
+                <div class="imgOne"></div>
+                    <div class="imgTwo">
+                        <div></div>
+                        <div>
+                            <span class="mood1">WOODIN HAUS SHOWROOM</span>
+                            <span class="mood2">손이 닿는 모든 곳, 눈길이 닿는<br>
+모든 곳에 건강함이 머뭅니다</span>
+                            <span class="mood3">당신의 가장 건강한 공간을 위해 우딘의 제품을 직접 눈으로 보고 만져보세요.</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- 두 번째 공간 시작됨 -->
+        <div class="imgWide1">
+            <div class="textBox">
+            <span class="collect">SHOWROOM GUIDE</span>
+            </div>
+        <!-- 이미지 시작 -->
+            <div class="bigImage2Box">
+                <div class="door"></div>
+                <div class="TextGreyBox">
+                    <div class="barLong1"><span>#01</span> <span>도어</span></div>
+                    <div class="barLong2"><span>#02</span> <span>중문 - 피노도어</span></div>
+                    <div class="barLong2"><span>#03</span> <span>시스템 창호</span></div>
+                    <div class="barLong2"><span>#04</span> <span>인테리어필름 & 보드 & 마루</span></div>
+                    <div class="barLong2"><span>#05</span> <span>목재</span></div>
+                    <div class="barLong2"><span>#06</span> <span>중목구조</span></div>
+                    <div class="barLong2"><span>#07</span> <span>모델하우스</span></div>
+                </div>
+
+            </div>
+        </div>
+        <!-- 공간3의 시작 -->
+         <div class="imgWide1">
+        <!-- 이미지 시작 -->
+            <div class="bigImage3Box">
+                <img src="/img/sowroomguide2.jpg" alt="쇼룸">
+                <div class="topBox">
+                    <div>
+                        <span>WOODIN HAUS</span>
+                        <span>모델하우스</span>
+                        <span>우딘은 소중한 당신의 공간에 건강한<br>
+라이프 스타일 인테리어를 제안하고 있습니다.</span>
+                    </div>
+                    <div>
+                        <img class="btw" src="/img/sowroomguide3.jpg" alt="쇼룸의 3번째">
+                        <img class="btw" src="/img/sowroomguide4.jpg" alt="쇼룸의 4번째">
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- 우딘 전시장 부분------------------------------------------ -->
+        <div class="imgWide2">
+            <div class="udin">우딘전시장</div>
+            <div class="text">
+                <div class="bold">ADDRESS</div>
+                <div class="thin">인천 서구 북항로 122 (원창동 391-33) 3F</div>
+                <div class="bold">BUSINESS HOURS</div>
+                <div class="thin">08:00~18:00 (주차가능)</div>
+                <div class="naver"><h2>N</h2>네이버 예약→</div>
+            </div>
+            <div class="mapBox"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101280.98846628783!2d126.49008039726561!3d37.5071896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b7f27e14d2199%3A0x640bdf3b62574bfc!2z7Jqw65SYSEFVU-yghOyLnOyepQ!5e0!3m2!1sko!2skr!4v1779444472243!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        </div>
+
+
+
+     <!-- footer부분 -->
+          <footer>
+            <div class="ma"></div>
+            <!-- 라스트박스 안 -->
+            <div class="LastBox">
+            <div class="lastOne"></div>
+            <div class="lastOne2">사업자등록번호 137.81.48926 ADD 인천 서구 북항로 54 (원창동 381-118)<br><br>
+TEL 032-583-0160 FAX 032-583-0161<br>
+COPYRIGHT Ⓒ 2022(주)우딘 RIGHTS RESERVED.</div>
+            </div>
+          </footer>
+          </div>
+
+    <!-- 스크립트 시작 -->
+    <script src="./js/showroom.js"></script>
+</body>
+</html>

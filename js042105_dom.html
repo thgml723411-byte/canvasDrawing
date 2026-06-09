@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+.outbox{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 350px;
+    /* height: 120px; */
+    border: 1px solid black;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+.inbox{
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+    background-color: skyblue;
+}
+.first{
+    background-color: red;
+}
+</style>
+
+</head>
+
+<body>
+
+    <div class="outbox" id="outbox"></div>
+      
+    <script>
+        let outbox = document.getElementById('outbox')
+        for(let i=1; i<=5; i++){
+            if(i==1){
+               outbox.innerHTML += "<div class='inbox first'> box" + i + '</div>'
+            }else{
+                
+               outbox.innerHTML += "<div class='inbox'> box" + i + '</div>'
+            }
+            
+        
+        }
+
+        //outbox.innerHTML부모안에자식을다넣어주세요라는것
+        //
+    </script>
+
+</body>
+</html>

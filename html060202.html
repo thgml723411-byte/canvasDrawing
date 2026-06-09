@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./reset.css" />
+<style>
+body{
+background-color: none;
+width: 100vw;
+overflow-x: hidden;
+}
+.nav{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:70px;
+    z-index:100;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 clamp(1rem, 4vw, 5rem);
+    background:rgba(0,0,0,0.25);
+}
+
+.logo{
+    color:white;
+    font-size:clamp(1.25rem, 2vw, 1.5rem);
+    font-weight:bold;
+}
+
+.menu{           
+    display:flex;
+    gap:30px;
+    justify-content: center;
+    align-items: center;
+    padding:0 clamp(1rem, 4vw, 5rem);
+}
+
+.menu a{
+    color:white;
+    font-weight: bold;
+    text-decoration:none;
+    font-size:clamp(0.875rem, 1.2vw, 2rem);
+}
+
+/* 햄버거 */
+.hamburger{
+    display:none;
+    border:none;
+    background:none;
+    color:white;
+    font-size:35px;
+    cursor:pointer;
+}
+
+/* 슬라이드 */
+.wrap{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    position:relative;
+}
+
+.slider{
+    display:flex;
+    width:400%;
+    height:100%;
+    transition:transform 1s ease-in-out;
+}
+
+.slide{
+    width:100vw;
+    height:100vh;
+    flex-shrink:0;
+    position:relative;
+}
+
+.slide video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* 슬라이드의 에프터 넣을자리 */
+.slide::after{
+    content:''; /* 비어있게 */
+    width:100%;
+    height:100vh;
+    position:absolute;
+    left:0; top:0;
+}
+
+/* 타이틀 */
+.textBox{
+    position:absolute;
+    left:8%;
+    bottom:22%;
+    z-index:10;
+    color:white;
+}
+
+.textBox h2{
+    font-size:clamp(36px, 6vw, 90px);
+    margin-bottom:20px;
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.textBox p{
+    font-size:clamp(16px, 2vw, 28px);
+    opacity:0;
+    transform:translateY(60px);
+}
+
+.slide.on h2{
+    animation:titleUp 0.9s forwards;
+}
+
+.slide.on p{
+    animation:titleUp 0.9s 0.25s forwards;
+}
+
+.btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,0.3);
+    color:white;
+    border-radius: 50%;
+    border: 1px solid white;
+    font-size:24px;
+    font-weight:bold;
+    cursor:pointer;
+    z-index:10;
+}
+.prev{
+    left:50px;
+}
+
+.next{
+    right:50px;
+}
+@keyframes titleUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+/* 모바일전용 */
+@media (max-width: 768px) {
+    .nav {
+        padding: 0 20px;
+        height:30px
+    }
+    .menu {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    .textBox{
+        left:6%;
+        bottom:17%
+    }
+    .btn{
+        width: 30px;
+        height:30px;
+        font-size:16px;
+    }
+}
+
+</style>
+</head>
+<body>
+    <nav class="nav">
+            <div class="logo">
+                VIDEO
+            </div>
+            <button class="hamburger">
+                ☰
+            </button>
+            <div class="menu">
+                <a href="">Home</a>
+                <a href="">About</a>
+                <a href="">Gallery</a>
+                <a href="">Contact</a>
+            </div>
+    </nav>
+
+    <div class="wrap">
+        <div class="slider">
+
+                <!-- 3 복제 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car3.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>Third Motion</h2>
+                        <p>세 번째 동영상 문구입니다</p>
+                    </div>
+                </div>
+                <!-- 1 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car4.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>First Video</h2>
+                        <p>첫 번째 동영상 타이틀입니다</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car2.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>Second Scene</h2>
+                        <p>두 번째 동영상 설명입니다</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car3.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>Third Motion</h2>
+                        <p>세 번째 동영상 문구입니다</p>
+                    </div>
+                </div>
+                <!-- 복제 1 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car4.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>First Video</h2>
+                        <p>첫 번째 동영상 타이틀입니다</p>
+                    </div>
+                </div>
+        </div> <!-- slider end -->
+        <!-- 좌우 버튼 구현 할것 -->
+         <button class="btn prev">&lt;</button>
+         <button class="btn next">&gt;</button>
+    </div> <!-- wrap end -->
+<script>
+const slider = document.querySelector(".slider")
+const slides = document.querySelectorAll(".slide")
+const hamburger = document.querySelector(".hamburger")
+const menu = document.querySelector(".menu")
+const prevBtn = document.querySelector(".prev")
+const nextBtn = document.querySelector(".next")
+
+let index = 1 //0번째는 3번카피동영상,실제는1번째있는동영상
+let realTotal = 3
+let isMoving = false
+
+slider.style.transform = `translateX(-${index*100}vw)`
+
+//타이틀애니메이션
+function showTitle(){
+
+    slides.forEach(function(slide){
+        slide.classList.remove("on")
+    })
+
+    void slides[index].offsetHeight; //리플로우
+    slides[index].classList.add("on")
+}
+
+//슬라이드이동
+function showTitle(){
+    slider.style.transition = `all 1s liner`
+    slider.style.transform = `translateX(-${index*100}vw)`
+}
+
+//다음
+function slideNext(){
+    if(isMoving){//isMoving이true입니까
+      return
+    }
+    isMoving = true
+    index++
+    slideMove()
+}
+//이전
+function slidePrev(){
+    if(isMoving){//isMoving이true입니까
+      return  
+    }
+    isMoving = true
+    index--
+    slideMove()
+}
+//트렌지션이끝났을때
+     //마지막(복제1번)에도달하였을떄진짜1번동영상으로순간이동
+slider.addEventListener("transitionend",function(){
+    if(index === realTotal+1){
+        slider.style.transition = "none"
+
+        index = 1
+        slider.style.transform = `translateX(-${index*100}vw)`
+    }
+    //제일앞쪽(복제3번)에도달하였을떄진짜3번으로순간이동
+    if(index ===0){
+        slider.style.transition = "none"
+
+        index = realTotal
+        slider.style.transform = `translateX(-${index*100}vw)`
+    }
+    showTitle()
+    isMoving = false
+})
+
+//버튼
+nextBtn.addEventListener("click",slideNext)
+prevBtn.addEventListener("click",slidePrev)
+
+//처음동영상타이틀실행
+showTitle()
+//자동슬라이드실행
+setInterval(slideNext(),5000)
+</script>
+</body>
+</html>

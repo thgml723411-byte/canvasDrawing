@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체함수</title>
+</head>
+<body>
+    <script>
+
+        let book = {
+            title : 'javascript 기초',
+            pages : 500,
+            publisher : '동아출판사',
+            reading : function(){
+                document.write('책을 읽고 있습니다'+'<br>')
+            },
+            clese : function(){
+                document.write('책을 덮습니다'+'<br>')
+            },
+            info : function(){
+                document.write(`${this.title},${this.pages},${this.publisher}`)
+            }
+        }
+        book.reading()
+        book.clese()
+        book.info()
+
+    </script>
+</body>
+</html>

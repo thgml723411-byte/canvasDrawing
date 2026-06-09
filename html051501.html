@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gnb, snb, fullmenu, observe</title>
+    <link rel="stylesheet" href="./reset.css" >
+    <style>
+        header{
+            width: 100%;
+            height: 90px;
+        }
+        .nav{
+            position: fixed;
+            left: 0; top: 0;
+            width: 100%;
+            height: 90px;
+            background-color: darkblue;
+            color: white;
+            display: flex;
+            justify-content: center; /* 가로가운데 */
+            /* align-items: start; */
+            transition: all 0.3s;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .nav.on{
+            height: 490px;
+        }
+        .logoBox{
+            width: 20%;
+            height: 90px;
+            /* background-color: pink; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            font-weight: bold;
+        }
+        .gnb{
+            width: 70%;
+            height: 90px;
+            /* background-color: skyblue; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .gnb > li{
+            width: calc(95%/3);
+            height: 90px;
+        }
+        .gnb > li > a {         
+            width: 100%;
+            height: 90px;
+            /* background-color: gold; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            font-weight: 700;            
+        }
+        .ham{
+            width: 10%;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 2px;
+            cursor: pointer;
+        }
+        .ham span{
+            width: 30px;
+            height: 4px;
+            background-color: white;
+        }
+        .snb{
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:10px;
+        }
+        
+        .fullmenu{
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.7);
+            position: fixed;  /* 스티커처럼딱붙어주세요 */
+            left: 0; top: -100%; /* 어디에 */
+            z-index: 100;   /* 올라오게하는 */
+            transition: all 0.3s; /* 부드럽게 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fullmenu.on{
+            top: 0; /* 위로올라가게싹안보이게 */
+        }
+        .closebtn{
+            position: absolute; /* 위치 이동하겠다*/
+            right: 30px; top: 30px; /* 위치 */
+            width: 30px;
+            height: 30px;
+            border-radius: 1px;
+            /* background-color: aqua; */
+            font-size: 25px;  /* 반응형할때같이조정할것 */
+            font-weight: bold;
+        }
+        .fullmenugnb{
+             width: 80%;
+             height: 80%;
+             /* background-color: blue; */
+             border-radius: 10px;
+             display: flex;
+             justify-content: space-around;/* 사이간격조정그래서밑에애들지움자동조절됨*/
+             /* align-items: center; */
+             /* gap: 100px; */
+
+        }
+        .fullmenugnb > li{
+            width: calc(90%/3);/* 공백없이예쁘게채워짐 */
+            height: 100%;
+            /* background-color: pink; */
+            margin-top: 50px; /* 천장에붙은걸내려오게 */
+        }
+        .fullmenugnb > li > a{
+            /* > li >a태그가중요함 */
+            /* > li >a태그는 글자만다루는게많아서텍스트얼라인,라인하이트사용함 */
+            display: block; /* 이미지나에도사용하고div의같은성질을가져라 */
+            width: 100%;
+            height: 50px;
+            /* background-color: blueviolet; */
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        section{
+            width: 100%;
+            height: 100vh;
+            display: none;
+            /* justify-content: center; 
+            align-items: center;     */
+            font-size: 70px;
+        }
+        /* #se01{background-color: pink; }
+        #se02{background-color:skyblue; }
+        #se03{background-color: gold; } */
+        section.on{
+            display: flex;
+        }
+
+        .outBox{
+          width: 100%;
+        }
+        .imgbox{
+            width: 100%;
+            height: 250px;
+            /* background-color: aqua; */
+            overflow: hidden; /* 반드시 */
+        }
+        .imgbox > img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.2);
+            transition: all 0.3s;
+        }
+        .textbox{
+            width: 100%;
+            height: 450px;
+            /* background-color: brown; */
+            font-size: 30px;
+            font-weight: bold;
+            transform:translateY(100px);
+            transition: all ;
+        }
+        .on{
+           transform:  scale:(1) ;
+        }
+        .maps{
+            display: block;
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- 메뉴상단시작 -->
+    <header>
+        <nav class="nav">
+            <div class="logoBox">
+                <a href="#" onclick="onpage(0)">logo</a>
+            </div>
+            <ul class="gnb">
+                <li>
+                    <a href="#" onclick="onpage(0)">회사소개</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="onpage(1)">회사연혁</a></li>
+                        <li><a href="#" onclick="onpage(2)">회사기술</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="onpage(3)">상품소개</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="onpage(3)">옥수수</a></li>
+                        <li><a href="#" onclick="onpage(4)">고구마</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="onpage(5)">고객문의</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="onpage(5)">Q&A</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+             <!-- 햄버거바시작 -->
+             <div class="ham">
+                <span></span>
+                <span></span>
+                <span></span>
+             </div>
+             <!-- 햄버거바시작 -->
+        </nav>
+    </header>
+    <!-- 메뉴상단종료 -->
+    <iframe class='maps' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.4400181988444!2d126.84848417639712!3d37.30840353888701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b6f81ed7be66b%3A0x4b5f72df9e8f8dd9!2z7J207KCg7Lu07ZOo7YSw7JWE7Lm0642w66-4IOyViOyCsOq1kOycoeyEvO2EsA!5e0!3m2!1sko!2skr!4v1779064617192!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="fullmenu">
+        <button class="closebtn">X</button>
+         <ul class="fullmenugnb">
+                <li>
+                    <a href="#" onclick="onpage(0)">회사소개</a>
+                    <ul class="fullmenusnb">
+                        <li><a href="#" onclick="onpage(1)">회사연혁</a></li>
+                        <li><a href="#" onclick="onpage(2)">회사기술</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="onpage(3)">상품소개</a>
+                    <ul class="fullmenusnb">
+                        <li><a href="#" onclick="onpage(3)">옥수수</a></li>
+                        <li><a href="#" onclick="onpage(4)">고구마</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="onpage(5)">고객문의</a>
+                    <ul class="fullmenusnb">
+                        <li><a href="#" onclick="onpage(5)">Q&A</a></li>
+                    </ul>
+                </li>
+            </ul>
+    </div>
+    <div class="swrap">
+        <section id="se01" class="on">
+        <div class="outBox">
+            <div class="imgbox scaleitem">
+                <img src="./img/banana.jpg" alt="이미지"/>
+            </div>
+            <div class="textbox upitem">
+                <div class="leftbox">hello</div>
+                <div class="right">hello</div>
+            </div>
+        </div>
+        </section>
+        <section id="se02">
+            회사연혁 공간입니다
+        </section>
+        <section id="se03">
+            회사기술 공간입니다
+        </section>
+    </div>
+
+    <script>
+        let gnb = document.querySelector(".gnb")
+        let nav = document.querySelector(".nav")
+        let sections = document.querySelectorAll(".swrap > section")
+        let ham = document.querySelector('.ham')
+        let fullmenu = document.querySelector('.fullmenu')
+        let closebtn = document.querySelector('.closebtn')
+        // let activeItems = document.querySelectorAll('.outBox >div')
+
+        //메뉴
+        gnb.addEventListener("mouseenter", function(){
+            nav.classList.add("on")
+        })
+        gnb.addEventListener("mouseleave", function(){
+            nav.classList.remove("on")
+        })
+
+        //햄버거
+         ham.addEventListener('click',function(){
+            fullmenu.classList.add('on')
+         })
+        closebtn.addEventListener('click',function(){
+            fullmenu.classList.remove('on')
+        })
+
+        //섹션
+        function onpage(num){
+            sections.forEach(function(item){
+                item.classList.remove("on")
+            })
+            fullmenu.classList.remove('on')
+            sections[num].classList.add("on")
+
+             //observe 독립적으로만들어야함
+
+         let activeItems = sections[num].querySelectorAll('.outBox>div')
+
+        }
+        let activeItems = sections[num].querySelectorAll('.imgbox .textbox')
+        const observe = new IntersectionObserver(function(entries){
+                entries.forEach(function(entry){
+                    if(entry.isIntersecting){
+                         entry.target.classList.add('on')//한번만
+                    }else{
+                        entry.target.classList.remove('on')//여러번
+                    }
+                })
+        },{
+            threshold : 0.3
+        })
+        
+        activeItems.forEach(function(item){
+            observe.observe(item)//내화면에들어왔지
+        })
+             
+    </script>
+</body>
+</html>

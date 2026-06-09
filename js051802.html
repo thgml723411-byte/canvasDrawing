@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성자함수</title>
+</head>
+<body>
+   <!-- -->
+
+<div class="dp"></div>
+
+<script>
+function Items(name,price){
+  this.na = name
+  this.pr = price
+
+  this.discount = function(){
+   let dis = ''
+    dis = `${this.na}의 10% 할인된 가격은${this.pr*0.9}원입니다<br>`
+    return dis
+  }
+}
+
+let allItems = [
+   new Items('수박',18000),
+   new Items('멜론',20000),
+   new Items('바나나',3000),
+]
+let kk = '' //초기값//변수쌓아두는공간누적시킨다는것
+allItems.forEach(function(item){
+   kk += item.discount()
+})
+
+let dp = document.querySelector('.dp')
+dp.innerHTML = kk //출력할때한번만
+</script>
+</body>
+</html>

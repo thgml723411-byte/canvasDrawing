@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>img fadeIn,fadeOut</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+    .wrap{
+        width: 800px;
+        height: 400px;
+        overflow: hidden;/* 부하그림이3개인데넘치지않게해주세요 */
+        margin: 50px auto;
+        position: relative;
+    }
+    .slide{
+        width: 100%;
+        height: 100%;
+
+        position: absolute; /* 똑같자리에겹쳐서내가보였다사라지고포지션밖에없음 */
+        left: 0;
+        top: 0;
+
+        display: none;
+    }
+    .slide img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .slide:first-child{
+        display: block;
+    }
+
+    .arrow{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(255,255,255,0.5);
+        border: none;
+        font-size: 20px;
+        font-weight: bold;
+
+        position: absolute;
+        top: 50%; 
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+    .prev{
+        left:30px;
+    }
+    .next{
+        right:30px;
+    }
+    .dotWrap{
+        display: flex;
+        gap: 15px;
+
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        z-index: 10;
+
+        /* width: 200px;
+        height: 50px;
+        background-color: red; 눈으로확인하기위해잠깐만든것*/
+    }
+    .dot{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: white;
+        opacity: 0.5;/* 선명도흐릿하게 */
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+    .dot.on{
+        opacity: 1;/* 선명도선명하게 */
+        transform: scale(1.15);
+    }
+
+    /*
+       first-chard::진~짜첫번째
+       first-of-type::같은태그의첫번째
+       
+       nth-child(2)::모든태그포함2번째
+       nth-of-type(2)::같은태그의2번째
+       
+     */
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <div class="slide"> 
+            <img src="../img/banana.jpg" alt="이미지1"/>
+        </div>
+        <div class="slide"> 
+            <img src="../img/back.jpg" alt="이미지2"/>
+        </div>
+        <div class="slide"> 
+            <img src="../img/drink.jpg" alt="이미지3"/>
+        </div>
+
+        <!-- 좌우버튼 -->
+         <button class="arrow prev">&lt;</button>
+         <button class="arrow next">&gt;</button>
+
+        <!-- 도트 -->
+         <div class="dotWrap">
+            <div class="dot on"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+         </div>
+    </div>
+
+    <script>
+      const slides = $('.slide'); //치는게귀찮으니깐변수로만들것
+      const dots = $('.dot');
+
+      let index = 0;
+
+      //공통적으로쓰이는슬라이드이동함수
+      function moveSlide(){
+          slides.stop(true,true).fadeOut(1000)
+          //stop()::현재진행중인애니멈춤
+          //stop(true)::현재대기중인애니삭제
+          //stop(true,true)::대기중인애니삭제,선재진행중인애니삭제
+          slides.eq(index).stop(true,true).fadeIn(1000)
+
+          dots.removeClass('on')
+          dots.eq(index).addClass('on')
+      }
+        setInterval(function(){
+            index++
+            if(index >= slides.length){
+                index = 0
+            }
+            moveSlide();
+        },3000)
+
+        //다음버튼클릭시
+        $('.next').on('click',function(){
+            index++
+            if(index >= slides.length){
+                index = 0
+            }
+            moveSlide();
+        },3000)
+
+        //이전버튼클릭시
+        $('.prev').on('click',function(){
+            index--
+            if(index < slides.length){
+                index = slides.length -1 //slides.levgth::총3개라서 
+                //2->1->0->2
+            }
+            moveSlide();
+        },3000)
+        
+        //도튼을클릭시
+        dots.on('click',function(){
+            index = $(this).index()
+            moveSlide()
+        })
+
+    </script>
+</body>
+</html>

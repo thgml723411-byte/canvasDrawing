@@ -60,13 +60,13 @@
             <div>
                 <!-- oninput 속성을 사용하여 HTML에서 스크립트 함수를 직접 호출 -->
                 <label for="strokeColor">색상</label>
-                <input type="color" id="strokeColor" value="#000000" oninput="changeColor(this.value)" />
+                <input type="color" id="strokeColor" value="#000"  />
 
                 <label for="lwidth">선굵기</label>
-                <input type="number" id="lwidth" value="2" min="1" max="50" oninput="changeWidth(this.value)" />
+                <input type="number" id="lwidth" value="2" min="1" max="50"  />
 
                 <label for="bgColor">배경색</label>
-                <input type="color" id="bgColor" value="#ffffff" oninput="changeBgColor(this.value)" />
+                <input type="color" id="bgColor" value="#fff" />
             </div>
 
             <button id="reset">지우기</button>
@@ -76,93 +76,62 @@
    </div>
 
    <script>
-        const canvas = document.querySelector("canvas");
-        const toolbar = document.getElementById("toolbar");
-        const ctx = canvas.getContext("2d");
+        const canvas = document.querySelector("canvas")
+        const toolbar = document.getElementById("toolbar")
 
-        // 캔버스 크기 초기화
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight - toolbar.offsetHeight;
-
-        let canvasOffsetX = canvas.offsetLeft;
-        let canvasOffsetY = canvas.offsetTop;
-
-        let isDrawing = false;
-        let lineWidth = 2;
-        let strokeColor = "#000000";
-
-        // 초기 배경색 채우기
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // [HTML에서 호출하는 전역 함수들]
-        
-        // 1. 선 색상 변경
-        function changeColor(value) {
-            strokeColor = value;
-        }
-
-        // 2. 선 굵기 변경
-        function changeWidth(value) {
-            lineWidth = value;
-        }
-
-        // 3. 배경색 변경 (CSS 스타일과 내부 데이터 동시 변경)
-        function changeBgColor(value) {
-            canvas.style.backgroundColor = value;
-            ctx.fillStyle = value;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-        }
-
-        // 4. 지우기 기능
-        if (e.target.id === 'reset') {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                const currentBg = document.getElementById("bgColor").value;
-                canvas.style.backgroundColor = currentBg;
-                ctx.fillStyle = currentBg;
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-            }
-
-        // [캔버스에 그린 그림 다운로드]
-        toolbar.addEventListener("click", function(e) {
-            if (e.target.id === 'downfile') {
-                let link = document.createElement('a');
-                link.download = 'drawing.png';
-                // ★ camvas 오타를 canvas로 수정했습니다.
-                link.href = canvas.toDataURL('image/png'); 
-                link.click();
-            }
-        });
-
-        // [그리기 마우스 이벤트 리스너]
-        canvas.addEventListener("mousedown", (e) => {
-            isDrawing = true;
-            ctx.beginPath();
-            ctx.moveTo(e.clientX - canvasOffsetX, e.clientY - canvasOffsetY);
-        });
-
-        canvas.addEventListener("mousemove", (e) => {
-            if (!isDrawing) return;
-            
-            ctx.lineWidth = lineWidth;
-            ctx.strokeStyle = strokeColor;
-            ctx.lineCap = "round";
-            ctx.lineJoin = "round";
-
-            ctx.lineTo(e.clientX - canvasOffsetX, e.clientY - canvasOffsetY);
-            ctx.stroke();
-        });
-
-        canvas.addEventListener("mouseup", () => { isDrawing = false; ctx.closePath(); });
-        canvas.addEventListener("mouseleave", () => { isDrawing = false; ctx.closePath(); });
-
-        // 화면 크기 재조정
-        window.addEventListener("resize", () => {
-            canvas.width = window.innerWidth;
+            canvas.width = window.innerWidth
             canvas.height = window.innerHeight - toolbar.offsetHeight;
-            canvasOffsetX = canvas.offsetLeft;
-            canvasOffsetY = canvas.offsetTop;
-        });
+
+            let canvasOffsetX = canvas.offsetLeft
+            let canvasOffsetY = canvas.offsetTop
+
+            let isDrawing = false
+
+            let startX
+            let startY
+            let lineWidth = 2
+
+            const ctx = canvas.getContext("2d")
+
+            // 선색상, 선굵기 변경 이벤트
+            toolbar.addEventListener("change", function(e){
+                if(e.target.id === "strokeColor"){
+                    ctx.strokeStyle = e.target.value;
+                }
+
+                if(e.target.id === 'lwidth'){
+                    lineWidth = e.target.value
+                }
+
+                 if(e.target.id === 'bgColor'){
+                    canvas.style.backgroundColor = e.target.value
+                }
+            })
+
+            canvas.addEventListener("mousedown", function(e){
+                isDrawing = true;
+                startX = e.clientX
+                startY = e.clientY
+            })
+
+            canvas.addEventListener("mousemove", function(e){
+                if(!isDrawing) return
+                ctx.lineWidth = lineWidth
+                ctx.lineCap = 'round'
+                ctx.lineTo(e.clientX, e.clientY - canvasOffsetY )
+                ctx.stroke()
+            })
+
+            canvas.addEventListener("mouseup", function(){
+                isDrawing = false
+                ctx.beginPath()
+            })
+
+            toolbar.addEventListener("click", function(e){
+                if(e.target.id === "reset"){
+                    ctx.clearRect(0,0,canvas.width, canvas.height)
+                }
+            })
     </script>
 </body>
 </html>

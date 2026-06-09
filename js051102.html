@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <!-- 
+    getDay() :: 요일 (0=>일요일)
+
+    let day = now.getDay()
+    switch(day){
+    case 0: dd='일요일'; break;
+    } 
+
+    2026년5월11일월요일
+    오후12시56분09초
+    이형태로출력구현되게하라
+    -->
+    <h2>디지털 시계</h2>
+    <div id="clock" ></div>
+   <script>
+    let clock = document.querySelector('#clock')
+    function clo(){
+      let today = new Date()
+
+      //날짜
+      let year = today.getFullYear()
+      let month = today.getMonth()
+      let date = today.getDate()
+
+      //요일
+      let day = today.getDay()
+      switch(day){
+      case 0: dd='일요일'; break;
+      case 1: dd='월요일'; break;
+      case 2: dd='화요일'; break;
+      case 3: dd='수요일'; break; 
+      case 4: dd='목요일'; break;
+      case 5: dd='금요일'; break;
+      case 6: dd='토요일'; break;
+    } 
+
+      //시간
+      let hh = today.getHours()
+      let mm = today.getMinutes()
+      let ss = today.getSeconds()
+      let kk = ''
+      if (hh > 12){
+        kk = '오후'
+        hh = hh - 12
+      }else if(hh === 12){
+        kk = '오후'
+        hh = 12
+      }else{
+        kk = '오전'
+      }
+      hh= hh>=10? hh: `0${hh}`
+      mm= mm>=10? mm: `0${mm}`
+      ss= ss>=10? ss: `0${ss}`
+    
+      clock.innerHTML = `${year}년 ${month+1}월 ${date}일 ${dd} <br> ${kk} ${hh} : ${mm} : ${ss}`
+    }
+    
+    setInterval(clo,1000)
+   </script>
+</body>
+</html>

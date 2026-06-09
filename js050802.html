@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 버튼</title>
+    <style>
+    .box{
+        background-color: aquamarine;
+        width: 200px;
+        height: 200px;
+    }
+    .box0{
+        border-color: blue;
+    }
+    .box1{
+        border-color: rgb(50, 50, 156);
+    }
+    .box2{
+        border-color: rgb(55, 231, 49);
+    }
+    .box3{
+        border-color: rgb(124, 34, 90);
+    }
+    .box4{
+        border-color: rgb(224, 84, 29);
+    }
+    .box5{
+        border-color: rgb(170, 67, 162);
+    }
+
+
+    </style>
+</head>
+<body>
+    <!-- 숫자를 입력받아 입력한 숫자만큼의 박스를 만드는 함수 -->
+     <div class="box"> 
+       <input id="content" type="number" placeholder="숫자를 입력하세요"/>
+     </div>
+    <button onclick="colorBox()">박스만들기</button>
+    <div class="dis">여기에출력</div>
+    <script>
+        let dis = document.querySelector('.dis')
+        let boxs = ''
+
+        function colorBox(){
+            for(let i=0;i<content.value;i++){
+            boxs += `<div class='box'>box<div>`
+        }
+            dis.innerHTML=boxs
+    }
+    </script>
+</body>
+</html>

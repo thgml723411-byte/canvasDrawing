@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달창만들기</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+    body{
+        width: 100%;
+        height: 100vh;
+    }
+    .outBox{
+        height: 100vh;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       gap: 30px;
+       margin-top: 30px;
+       /* 포지션앱솔루트,탑:50% 트렌스폼 : 트렌스레이트Y:-50% */
+     }
+    .texts{
+        width: 80%;
+        border: 2px solid #333;
+        border-radius: 10px;
+        padding: 15px;
+        line-height: 1.5;
+    }
+     #open{
+      background-color: orangered;
+      color: white;
+      padding: 7px;
+      border: none;
+     }
+     .modal_box{
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.7);
+        position: absolute;
+        left: 0; top: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+     }
+     .modal_box.on{
+       display: flex;
+     }
+     #modal_contents{
+        background-color: white;
+        width: 50%;
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+     }
+     #close{
+        position: absolute;
+        right: 10px; top: 10px;
+        background-color: white;
+        color: #333;
+        font-size: 13px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        border-radius: 5px;
+     }
+     #title{
+        font-size: 50px;
+        color: #222;
+        margin-top: 20px;
+        margin-bottom: 20px;
+     }
+     #profile{
+        width: 90%;
+        /* height: 20px; */
+        /* background-color: red; */
+        /* margin: 10px auto; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     }
+     #imgBox{
+        width: 50%;
+        height: 200px;
+        background-image: url(./img/man.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+     }
+     #rightText{
+        width: 50%;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        padding-left: 30px;
+        padding-top: 30px;
+     }
+    </style>
+</head>
+<body>
+    <div class="outBox">
+    <div class="texts">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </div>
+    <button id="open">프로필 보기</button>
+    <div class="modal_box">
+        <div id="modal_contents">
+           <button id="close">닫기</button>
+           <h2 id="title">My Profile</h2>
+           <div id="profile">
+            <div id="imgBox"></div>
+            <div id="rightText">
+            <p>이름 : 전소희</p>
+            <p>주소 : 한대앞역(안산)</p>
+            <p>연락처 : 010-1234-4567</p>
+             </div>
+           </div>
+        </div>
+    </div>
+</div>
+<script>
+    let opens = document.querySelector('#open')
+    let modal_box = document.querySelector('.modal_box')
+    let closes = document.querySelector('#close')
+    
+    opens.addEventListener('click',function(){
+        modal_box.classList.add('on')
+    })
+    closes.addEventListener('click',function(){
+        modal_box.classList.remove('on')
+    })
+
+    open.forEach(function(item,idx){
+    })
+
+</script>
+</body>
+</html>

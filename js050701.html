@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력한 값의 2개 만들기</title>
+
+    <style>
+        #dis{
+            background-color: skyblue;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    함수란? 해야 할 일은 묶어 놓은 것
+    여러번 호출가능
+    호출할때 인수를 넘기면 매개변수를 사용하여 활용
+    retrun함수를 실행하고 값을 돌려줄때
+    {}스코프가생기면서위에글들이생긴것
+    -->
+     
+    <!-- 1번 이름을 받고 환영 메세지 출력하기 -->
+    <div id="dis">
+    </div>
+    <div class="outBox">
+        <input type="text" id="name" placeholder="이름을 입력하세요" />
+        <button onclick="hello()">입력</button>
+    </div>
+
+    <!-- 2번 세개의 숫자를 받고 3개의 숫자의 합을 구하기 -->
+    <div class="outBox">
+        <input type="text" id="num1" placeholder="첫번째 숫자를 입력하세요" />
+        <input type="text" id="num2" placeholder="두번째 숫자를 입력하세요" />
+        <input type="text" id="num3" placeholder="새번째 숫자를 입력하세요" />
+        <button onclick="three()">3개숫자 합</button>
+    </div>
+
+    <!-- 3번 임의의 배열을 만들고, 배열의 총 합계 구하기 인풋상자X-->
+    <div class="outBox">
+        <button onclick="arrays()">임의의 배열합</button>
+    </div>
+
+    <!-- 4번 //이름과 패스워드를 받아서,패스워드가 1234이면 ***님환영합니다 그렇지 않다면 다시 입력해주세요 -->
+    <div class="outBox">
+        <input type="text" id="name" placeholder="이름를 입력하세요" />
+        <input type="password" id="pass" placeholder="패스워드를 입력하세요" />
+        <button onclick="login()">확인</button>
+        <div id="dis"></div>
+    </div>
+
+    <!-- 5번 이름과나이를입력받아서 20살이면***님성년입니다 아니면***님미성년입니다 -->
+     <div class="outBox">
+        <input type="text" id="name" placeholder="이름을 입력하세요" />
+        <input type="num" id="num" placeholder="나이를 입력하세요" />
+        <button onclick="age()">확인</button>
+        <div id="dis"></div>
+    </div>
+
+    <script>
+    //1번 이름을 받고 환영 메세지 출력하기
+    function hi(na)
+        return `${na}님 환영합니다`
+    function hello(){
+        let name = document.querySelector('#name').value
+        let ans = hi(name)
+        document.querySelector('#dis').innerHTML= ans
+    }
+
+
+    //2번 세개의 숫자를 받고 3개의 숫자의 합을 구하기
+    function treble(n1,n2,n3){
+        return  n1+n2+n3
+      }
+    function three(){
+        let num1 = Number(document.querySelector('#num1').value)
+        let num2 = Number(document.querySelector('#num2').value)
+        let num3 = Number(document.querySelector('#num3').value)
+        let result = treble(num1,num2,num3)//함수로만들어서호출하겠다합을
+        document.querySelector('#dis').innerHTML=`세 수의 결과값은 : ${result}`
+      }
+
+
+    //3번 임의의 배열을 만들고,(단length는5) 배열의 총 합계 구하기
+    //반복문을함수로만들고싶다재활용이되겠다인식이되면함수로호출하기로
+    let arr = [1,4,5,8,9]
+    function arrSum(a){
+        let sum = 0
+        for(let i=0; i<a.length; i++){
+            sum+=arr[i]
+        }
+        return sum
+    }
+    function arrays(){
+        let sum = arrSum(arr)
+        document.querySelector('#dis').innerHTML = `배열의 총합은 ${sum}`
+    }
+
+    //4번 이름과 패스워드를 받아서,패스워드가 1234이면 
+    // ***님환영합니다 그렇지 않다면 다시 입력해주세요
+    function checklogin(p,n){
+       let result = ''
+        if(p === '1234'){
+              result = `${n}님 환영합니다`
+        }else{
+              result = `${n}님 비밀번호가 틀렸습니다 다시 입력해주세요`
+        }
+        return result
+    }
+    function login(){
+        let name = document.querySelector('#name').value
+        let pass = document.querySelector('#pass').value
+        let result = checklogin(pass,name)
+        document.querySelector('#dis').innerHTML = result
+    }
+
+    //5번 이름과나이를입력받아서 20살이면***님성년입니다 아니면***님미성년입니다
+    function ages(n,a){
+        let result = ''
+        if( num === 20){
+            result = `${n}님 성년이시군요`
+        }else{
+            result = `${n}님 미성년이시군요`
+        }
+        return result
+    }
+    function age(){
+        let name = document.querySelector('#name').value
+        let num =  Number(document.querySelector('#num')).value
+        document.querySelector('#dis').innerHTML = result
+    }
+
+    </script>
+</body>
+</html>

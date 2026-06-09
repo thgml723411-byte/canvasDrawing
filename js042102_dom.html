@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<input id = "num" type="number" placeholder="숫자를 입력해주세요"/>
+<button id="btn"> 확인 </button>
+<div id="dis">여기에 1~내가 입력한 숫자까지의 총합계</div>
+
+
+<script>
+let num = document.getElementById('num')
+let btn = document.getElementById('btn')
+let dis = document.getElementById('dis')
+
+btn.onclick = function(){
+    let sum = 0;
+    let num1 = Number(num.value)
+for(let i=1; i<=num1; i++){
+   sum += i
+}
+dis.innerHTML = '총합계'+ sum
+}
+
+
+</script>
+
+
+</body>
+</html>

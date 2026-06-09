@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+</head>
+<body>
+    <!--
+    /정규표현식/g 
+     -->
+    <script>
+        ///정규표현식/g 
+        //정규식을활용하는방법
+        //1.test()명령어::정규표현식의내용이맞는지틀린지체크하는친구
+        let a = "abcdef"
+        document.write(/ghi/g.test(a)+"<br>") //true,flase
+
+        //2.변수.match(/정규식/)
+        //일치하면일치하는내용을출력,일치하지않으면null출력
+        let b = "html css javascript"
+        document.write(b.match(/react/g)+"<br>") //일치값,불이치값null
+
+        //3.변수.replace(정규식,바꾸고싶은문자)
+        //정규식에해당하는내용을바꾸고싶은문자로변경(치환)
+        let c = "h e l l o"
+        let result = c.replace(/ /g,'') 
+        document.write(c + " " + result + "<br>") //띄어쓰기
+
+        //삭곽표시
+        //^x :: X문자로시작을의미한다 
+        //첫글자가a로시작하나않하다정규식으로
+        let d = "abcdefg"
+        document.write(/^a/g.test(a)+"<br>")
+        let d = "http://www.naver.com"
+        document.write(/^http/g.test(a)+"<br>")
+        let d = "김수박"
+        document.write(/^김/g.test(a)+"<br>")
+        //구현
+        let d = "김수박"
+        if(/^김/g.test(a) === true)  
+        d="수박"
+        document.write(d)
+        //x$ :: X문자로종료한다는의미한다
+        //끝자가박으로종료하냐정규식으로
+        let d = "김수박"
+        document.write(/^김.박$/g.test(a)+"<br>")
+        //x+ :: x가 하나이상 반복하는가
+        let d = "abcdefg"
+        document.write(/^c+/g.test(a)+"<br>")
+
+    </script>
+</body>
+</html>

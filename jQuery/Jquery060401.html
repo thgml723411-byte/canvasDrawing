@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery시작</title>
+    <!-- <script src="./jQuery/jquery-4.0.0.js"></script> -->
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- 
+    jQuery
+    장점 : js 쉽고 짧다. 애니메이션등이 조금 부드럽다. 다양한 플러그인 지원
+
+    jquery : 아코디언 메뉴,스크롤헤더변경,이미지슬라이드,이미지페이드인아웃,모달팝업(오늘안보기),호버서버필터메뉴학습,플러그인사용
+    1.기본구조
+    $(document).ready(function(){
+
+       모든dom(html태그)요소가 로딩이 되면
+    })
+    위에가조금더오류를줄여준다안정성보장
+    위에구조랑같은기능이
+    2.축약버전
+    $(function(){
+      
+    })
+      -->
+    <button id="btn">클릭하세요</button>
+    <p id="dis">원래 문구</p>
+    <script>
+        // let btn = document.querySelector('#btn')
+        // btn.addEventListener("click",function(){
+        // })
+       $(function(){
+          $('#btn').click(function(){
+            $("#dis").text("버튼을 클릭했습니다")
+            // .text():값읽기기능,
+            // .text("값을넣었다"):값부여기능
+          })
+       })
+    </script>
+</body>
+</html>

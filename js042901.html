@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        #dis { 
+               width: 500px; 
+               height: 50px; 
+               background-color: aqua; 
+               border-radius: 10px; 
+               display: flex; 
+               align-items: center; 
+               padding: 0 10px; 
+               box-sizing: border-box; 
+               font-weight: bold; 
+            }
+        .outBox { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 20px; 
+            width: 500px; 
+            height: 70px; 
+            margin-top: 10px; 
+        }
+        .outBox .box { 
+            width: 50px; 
+            height: 50px; 
+            background-color: darkblue; 
+            color: white; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            border-radius: 50%; 
+            cursor: pointer; 
+        }
+        .outBox .box1 { 
+            background-color: blue; 
+        }
+        .outBox .box2 { 
+            background-color: skyblue; 
+        }
+        .outBox .box3 { 
+            background-color: rgb(162, 196, 209); 
+        }
+    </style>
+</head>
+<body>
+    <div id="dis">0</div>
+    <div class="outBox">
+        <div class="box" data-num="1">1</div>
+        <div class="box" data-num="+">+</div>
+        <div class="box" data-num="-">-</div>
+        <div class="box" data-num="2">2</div>
+        <div class="box box1" data-num="=">=</div>
+        <div class="box box2" data-num="clear">clear</div>
+        <div class="box box3" data-num="back">back</div>
+    </div>
+
+    <script>
+        const boxs = document.querySelectorAll(".box")
+        const dis = document.querySelector("#dis")
+        let expr = ''
+
+        boxs.forEach((item) => {
+            item.addEventListener("click", () => {
+                let v = item.dataset.num
+
+                
+                if (v === "clear") {
+                    expr = ''
+                    dis.innerHTML = '0'
+                    return
+                }
+
+                
+                if (v === "back") {
+                    expr = expr.slice(0, -1);
+                    dis.innerHTML = expr === '' ? 0 : expr 
+                    return
+                }
+
+                
+                if (v === "=") {
+                    if (expr === '' || expr.endsWith("+") || expr.endsWith("-")) {
+                        dis.innerHTML = 'error'
+                        expr = '';
+                        return;
+                    }
+                    try {
+                        let ans = eval(expr)
+                        dis.innerHTML = Number(ans).toLocaleString()
+                        expr = String(ans)
+                    } catch (e) {
+                        dis.innerHTML = 'error'
+                        expr = ''
+                    }
+                    return;
+                }
+
+                
+                expr += v
+                render()
+            })
+        })
+        
+        function render() {
+            if (expr === '') {
+                dis.innerHTML = '0'
+                return
+            }
+            
+            let tokens = expr.split(/([+\-])/)
+            let formatted = tokens.map(t => {
+                if (t === "+" || t === "-") return t
+                return t === "" ? "" : Number(t).toLocaleString()
+            }).join("")
+            
+            dis.innerHTML = formatted
+        }
+    </script>
+</body>
+</html>

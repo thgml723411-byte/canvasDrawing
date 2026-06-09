@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Todo List</title>
+    <link rel="stylesheet" href="./reset.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #bfefff, #fff6a8, #ffffff);
+        }
+
+        .todo-wrap {
+            width: 80%;
+            padding: 34px;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: 22px;
+            background-color: rgba(255, 255, 255, 0.55);
+            box-shadow: 0 18px 45px rgba(46, 139, 173, 0.22);
+            backdrop-filter: blur(12px);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .todo-wrap:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 55px rgba(46, 139, 173, 0.32);
+        }
+
+        h1 {
+            margin: 0 0 24px;
+            color: #2098c7;
+            text-align: center;
+            font-size: 34px;
+        }
+
+        .field-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #247f9d;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        #todoInput,
+        #prioritySelect,
+        #addBtn {
+            height: 50px;
+            border: 1px solid rgba(32, 152, 199, 0.3);
+            border-radius: 12px;
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.72);
+            font-size: 16px;
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+        }
+
+        #todoInput {
+            flex: 1;
+            min-width: 0;
+            padding: 0 16px;
+            color: #246b80;
+            font-weight: bold;
+        }
+
+        #todoInput::placeholder {
+            color: #3b9ab9;
+            opacity: 1;
+        }
+
+        #prioritySelect {
+            width: 96px;
+            padding: 0 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #addBtn {
+            width: 78px;
+            color: #2f8fad;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #todoInput:focus,
+        #prioritySelect:hover,
+        #addBtn:hover {
+            transform: translateY(-3px);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 18px rgba(32, 152, 199, 0.18);
+        }
+
+        #addBtn:hover {
+            background-color: #fff176;
+        }
+
+        #todoList {
+            height: 240px;
+            overflow: auto;
+            margin: 0;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: 16px;
+            list-style: none;
+            background-color: rgba(255, 255, 255, 0.38);
+        }
+
+        #todoList li {
+            padding: 11px 12px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+        }
+
+        #todoList li:hover {
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14);
+            opacity: 0.92;
+        }
+
+        .high {
+            background-color: #ff6b6b;
+        }
+
+        .normal {
+            background-color: #45c4e8;
+        }
+
+        .low {
+            background-color: #f6cf4f;
+        }
+
+        #scrollInfo {
+            margin-top: 12px;
+            padding: 10px;
+            border-radius: 12px;
+            color: #2f8fad;
+            font-weight: bold;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.45);
+        }
+
+        @media (max-width: 520px) {
+            .todo-wrap {
+                padding: 24px;
+            }
+
+            .input-area {
+                flex-direction: column;
+            }
+
+            #prioritySelect,
+            #addBtn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--
+    jQuery 기초 명령을 활용한 ToDo List 만들기 
+     -->
+    <div class="todo-wrap">
+        <h1>Todo List</h1>
+
+        <label for="todoInput" class="field-label">할일 입력</label>
+        <div class="input-area">
+            <input type="text" id="todoInput" placeholder="할일을 입력하세요">
+
+            <select id="prioritySelect">
+                <option value="high">높음</option>
+                <option value="normal" selected>보통</option>
+                <option value="low">낮음</option>
+            </select>
+
+            <button id="addBtn">추가</button>
+        </div>
+
+        <ul id="todoList"></ul>
+
+        <div id="scrollInfo">현재 스크롤 위치: 0</div>
+    </div>
+
+    <script>
+        $(function(){
+            function getPriorityText(priority) {
+                const priorityTextMap = {
+                    high: "높음",
+                    normal: "보통",
+                    low: "낮음"
+                };
+
+                return priorityTextMap[priority] || "보통";
+            }
+
+            function addTodo() {
+                let todo = $("#todoInput").val().trim();
+                let priority = $("#prioritySelect").val();
+                let priorityText = getPriorityText(priority);
+
+                if (todo === "") {
+                    alert("할일을 입력하세요.");
+                    $("#todoInput").focus();
+                    return;
+                }
+
+                $("#todoList").append(
+                    `<li class="${priority}">[${priorityText}] ${todo}</li>`
+                );
+
+                $("#todoInput").val("").focus();
+            }
+
+            $("#addBtn").click(function(){
+                addTodo();
+            });
+
+            $("#todoInput").keydown(function(e){
+                if (e.key === "Enter") {
+                    addTodo();
+                }
+            });
+
+            $("#todoList").on("dblclick", "li", function(){
+                $(this).remove();
+            });
+
+            $("#todoList").scroll(function(){
+                let currentScroll = Math.floor($(this).scrollTop());
+                $("#scrollInfo").text("현재 스크롤 위치: " + currentScroll);
+            });
+
+            $("#prioritySelect").change(function(){
+                let priority = $(this).val();
+
+                $(this).removeClass("high normal low");
+                $(this).addClass(priority);
+            });
+
+            $("#prioritySelect").trigger("change");
+        });
+    </script>
+</body>
+</html>

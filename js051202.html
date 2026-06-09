@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수학</title>
+    <style>
+    .dis{
+        width: 800px;
+        height: 150px;
+        background-color: rgb(91, 91, 128);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    </style>
+</head>
+<body>
+    <input id="Innmu" type="number" placeholder="1~10 사이 숫자를 입력하세요">
+    <button onclick="check()" id="btn">정답 확인</button>
+    
+    <div class="dis">남은 찬스: 5번</div>
+
+    <script>
+        let boingo = Math.floor(Math.random() * 10) + 1//정답변수
+        let chance = 5//찬스변수
+        let dis = document.querySelector('.dis')//여기에출력변수
+        let btn = document.querySelector('#btn')//버튼변수
+
+        //함수
+        function check() {
+            let num = Number(document.querySelector('#Innmu').value)
+            if (num === boingo) {
+                outBox.innerHTML = `빙고!`
+                btn.disabled = true;
+            } else if (chance === 0) {
+                outBox.innerHTML = `게임 오버! 정답은 ${boingo}`;
+                btn.disabled = true;
+            } else {
+                let hint = boingo > num ? '큰 숫자가 필요해요' : '작은 숫자가 필요해요';//삼항연산자
+                outBox.innerText = `${hint} (남은 찬스: ${chance}번)`;
+            }
+        }
+    </script>
+</body>
+</html>

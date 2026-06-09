@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     .wrap1{
+        width: 800px;
+        height: 400px;
+
+        background-color: aqua;
+        background-image: url(./img/dog1.jpg);
+        background-repeat: no-repeat;/*반복안하는것*/
+        background-position: right top;/* 내가있는위치 오른쪽 아래 */
+        background-size: cover;/*%크기/cover넘치는친구를짤라/contain비율을유지하면서남는친구가있음 */
+
+        text-align: center;/*  */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* margin-left: 50px; */
+        /* padding-left: 50px;
+        padding-top: 50px; */
+     }
+     .wrap1 p {
+        margin-left: 50px;
+        /* margin-top: 50px; */
+     }
+
+     .wrap2{
+        width: 800px;
+        height: 400px;
+        background-color: rgb(33, 187, 46);
+        background-image: url(./img/dog1.jpg);
+        background-repeat: no-repeat;/*반복안하는것*/
+        background-position: left top;/* 내가있는위치 오른쪽 아래 */
+        background-size: 50%;/*%크기/cover넘치는친구를짤라/contain비율을유지하면서남는친구가있음 */
+        display: flex;
+        justify-content: end;
+        align-items: center;
+     }
+     .wrap2 p{
+        margin-right: 50px ;
+     }
+
+     .wrap3{
+        width: 800px;
+        height: 400px;
+        background-color: rgb(161, 49, 133);
+        background-image: url(./img/dog1.jpg);
+        background-repeat: no-repeat;/*반복안하는것*/
+        background-position: right bottom;/* 내가있는위치 오른쪽 아래 */
+        background-size: 50%;/*%크기/cover넘치는친구를짤라/contain비율을유지하면서남는친구가있음 */
+        display: flex;
+        justify-content: left;
+        align-items: center;
+     }
+
+     .wrap3 p{
+       margin-left: 50px ;
+     }
+
+     .wrap4{
+        width: 800px;
+        height: 400px;
+        background-color: rgb(188, 199, 31);
+        background-image: url(./img/dog1.jpg);
+        background-repeat: no-repeat;/*반복안하는것*/
+        background-position: left bottom;/* 내가있는위치 오른쪽 아래 */
+        background-size:50%;/*%크기/cover넘치는친구를짤라/contain비율을유지하면서남는친구가있음 */
+        display: flex;
+        justify-content: end;
+        align-items: center;
+     }
+
+     .wrap4 p{
+        margin-right: 30% ;
+     }
+
+    </style>
+</head>
+<body>
+    <div class="wrap1">
+        <p>반갑습니다</p>
+    </div>
+    <div class="wrap2">
+        <p>안녕하세요</p>
+    </div>
+    <div class="wrap3">
+        <p>안녕하세요</p>
+    </div>
+    <div class="wrap4">
+        <p>안녕하세요</p>
+    </div>
+</body>
+</html>

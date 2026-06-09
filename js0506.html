@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    //배열을 매개변수로 입력받아 총 합의 값을 돌려받아서 출력
+    let num = [3,7,2,1,5]
+    
+    //add함수이름()넘겨받는곳
+    function add(num){
+        let sum = 0;
+
+        //반복을할거니깐for문사용
+        for(let i=0; i<num.length; i++){
+            sum += num[i]
+        }
+        //최종합계반환sum에돌려줌
+        return sum
+    }
+    //함수호출
+    let result = add(num)
+    //결과출력
+   document.write(result)
+
+</script>
+</body>
+</html>

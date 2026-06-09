@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hambergerbart</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cherry+Bomb+One&family=Gugi&family=Jua&family=Major+Mono+Display&family=Noto+Sans+KR:wght@100..900&family=Orbit&display=swap" rel="stylesheet">
+<style>
+ /* 전체화면의 메뉴 부분 */
+ .fullMenu{
+    width: 100%;
+    height: 0;
+    background-color: rgba(236, 236, 236, 0.8);
+    color: rgb(78, 78, 78);
+    position: fixed;
+    left: 0;
+    top: -100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.3s;
+ }
+.fullMenu.on{
+    top: 0;
+    height: 100vh;
+    display: flex;
+
+}
+</style>
+</head>
+<body>
+    <div class="fullMenu">
+        <div class="closeBtn">X</div>
+        <ul class="fullGnb">
+            <li>
+                <a href="#" onclick="showPage(0)">브랜드</a>
+                <ul class="fullSnb">
+                    <li><a href="#" onclick="showPage(0)">브랜드스토리</a></li>
+                    <li><a href="#" onclick="showPage(1)">연혁 및 인증</a></li>
+                    <li><a href="#" onclick="showPage(1)">CI$BI</a></li>
+                    <li><a href="#" onclick="showPage(1)">오시는 길</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" onclick="showPage(0)">스토리</a>
+                <ul class="fullSnb">
+                    <li><a href="#" onclick="showPage(0)">미디어</a></li>
+                    <li><a href="#" onclick="showPage(1)">홍보</a></li>
+                    <li><a href="#" onclick="showPage(1)">협찬</a></li>
+                    <li><a href="#" onclick="showPage(1)">이벤트</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" onclick="showPage(0)">갤러리</a>
+                <ul class="fullSnb">
+                    <li><a href="#" onclick="showPage(0)">컬렉션</a></li>
+                    <li><a href="#" onclick="showPage(1)">인테리어</a></li>
+                    <li><a href="#" onclick="showPage(1)">익스테리어</a></li>
+                </ul>
+            </li>
+
+             <li>
+                <a href="#" onclick="showPage(14)">쇼룸</a>
+                <ul class="fullSnb">
+                    <li><a href="#" onclick="showPage(15)">전시장</a></li>
+                </ul>
+            </li>
+    </div>
+
+    
+</body>
+</html>

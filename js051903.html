@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성자함수 주문</title>
+    <style>
+    h1{
+      text-align: center;
+    }
+    .wrap{
+        width: 100%;
+    }
+    h2{
+        text-align: center;
+    }
+    .burgerBox{
+       width: 60%;
+       height: 350px;
+       /* background-color: lightgray; */
+       margin: 10px auto;
+       display: flex;
+       gap: 20px;
+    }
+    .burgerLabel{
+        flex: 1; 
+        cursor: pointer;
+    }
+    .burgerLabel input{
+        display: none; 
+    }
+    .burgerLabel input:checked + .card{
+       transform: scale(1.05); 
+       border: 1px solid #333;
+    }
+    .card{
+        overflow: hidden;  
+        /* background-color: blue; */
+    }
+    .card img{
+        width: 100%;
+        height: 290px;
+        object-fit: cover; 
+    }
+    .card p{
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+    }
+    .box{
+        padding: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #333;
+    }
+    .endbox{
+        background-color: #ccc;
+        border: 1px solid #333;
+        padding: 30px;
+        width: 150px;
+        height: 100px;
+    }
+    .sizeBox{
+       width: 60%;
+       height: 100px;
+       /* background-color: lightgray; */
+       gap: 20px;
+       margin: 30px auto; 
+       display: flex;     
+       justify-content: center; 
+       align-items: center;
+    }
+   #dis{
+    width: 60%;
+    height: 300px;
+    /* background-color: blue; */
+    margin: 0 auto;
+   }
+    </style>
+</head>
+
+<body>
+    <h1>햄버거 주문</h1>
+
+     <div class="wrap">
+      <h2>버거 선택</h2>
+
+        <div class="burgerBox">
+         <label class="burgerLabel">
+          <input name="burger"  type="radio" value="불고기버거" />
+          <div class="card">
+             <img src="./img/burger4.png" alt="불고기버거이미지"/>
+             <p>불고기버거</p>
+          </div>
+         </label>
+
+          <label class="burgerLabel">
+           <input name="burger" type="radio" value="치즈버거" />
+           <div class="card">
+             <img src="./img/burger5.png" alt="치즈버거이미지"/>
+             <p>치즈버거</p>
+          </div>
+        </label>
+
+        <label class="burgerLabel">
+           <input name="burger"  type="radio" value="새우버거" />
+            <div class="card">
+             <img src="./img/burger2.png" alt="새우버거이미지"/>
+              <p>새우버거</p>
+          </div>
+        </label>
+      </div>
+ 
+      <h2>사이즈 선택</h2>
+          <div class="sizeBox">
+             <label>
+              <input name="size" type="radio" value="small" />
+              small (기본)
+            </label>
+            <label>
+              <input name="size" type="radio" value="midium" />
+              midium (2,000원 추가)
+            </label>
+            <label>
+              <input name="size" type="radio" value="large" />
+              large (4,000원 추가)
+            </label>
+
+            <button onclick="checking()">주문하기</button>
+        </div>
+        <div id="dis"></div>
+    </div>
+
+    <script>
+     class Burger{
+        constructor(name,price,size){
+           this.name = name
+           this.price = price
+           this.size = size
+        }
+
+            smallprice(){
+                return this.price
+            }
+           midiumprice(){
+                return this.price + 2000
+            }
+
+           largeprice(){
+                return this.price + 4000
+            }
+            
+        }
+
+      let burgerCart = []
+
+      function checking(){
+        let burger = document.querySelector('input[name="burger"]:checked')//네임이라는속성중에서드링크를데고들어와서그중에checked사용
+        let size = document.querySelector('input[name="size"]:checked')//네임이라는속성중에서사이즈를데고들어와서그중에checked사용
+        let dis = document.querySelector('#dis')
+    
+        let price = 0;
+
+        if(!burger || !size){
+            dis.innerHTML = '버거와 사이즈를 선택해주세요'
+            return 
+        }
+
+        switch(burger.value){
+            case '불고기버거' : 
+             price = 4000
+            break
+            case '치즈버거' : 
+             price = 4000
+            break
+            case '새우버거' : 
+             price = 4000
+            break
+        }
+       
+        let item = new Burger(burger.value, price, size.value)
+             
+        let finalprice = 0
+        switch(item.size){
+            case 'small' : 
+            finalprice = item.smallprice()
+            break
+            case 'midium' : 
+            finalprice = item.midiumprice()
+            break
+            case 'large' : 
+            finalprice = item.largeprice()
+            break
+        }
+        
+        burgerCart.push({name:item.name, price:item.price, size:item.size, final:finalprice})
+
+       
+        let show = ''
+        let sum = 0;
+        burgerCart.forEach(function(burger){
+           show += `<div class='box'> 버거명 : ${burger.name}<br> 원가격: ${burger.price}원<br> 사이즈 : ${burger.size}<br> 최종액 : ${burger.final}원<br> </div>`
+           
+           sum = sum = burger.final
+        })
+        dis.innerHTML = show + `<br><div class='endbox'> 총 합계 : ${sum.toLocaleString()}원 </div>`
+     }
+    </script>
+</body>
+</html>

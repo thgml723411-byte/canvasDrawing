@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js함수정리</title>
+    <style>
+        #dis{
+            width: 100%;
+            height: 100vh;
+            background-color: pink;
+        }
+        ul{
+            width: 500px;
+            height: 500px;
+            background-color: skyblue;
+        }
+      .liBox{
+        width: 300px;
+        height: 300px;
+        background-color: black;
+        color: white;
+      }
+    </style>
+</head>
+<body>
+    <!--
+    1.변수
+    var::동일한변수를중복해서선언이가능함
+    let::이미선언한변수를중복해서선언할수없음
+    const::변경하지않을데이터선언,이미선언한값에대해중복해서값을재지정할수없다.
+    2.연산자
+     사직연산자::+,-,*,/,%
+              ::"문자1"+"문자2"=>문자연결문자1문자2
+              ::"문자1"+20=>에러발생
+              ::20+20=>실제더한값40
+     증감연산자::++,--
+     비교연산자::>크다,>=크거나같다,<작다,<=작거나같다,==같다,!같지않다
+     논리연산자::&&(그리고,and),||(또는,or)
+     삼항연산자::조건?조건이참일때실행값:조건이거짓일때
+    3.제어문
+      if::if(조건){
+             조건이 참일때 실행값
+          }else{
+             조건이 거짓일때
+          }
+      switch::switch(변수){
+                  case 변수값의경우
+                  break 
+                }
+      do - while::do{
+                     반복할실행문
+                   }while(조건)
+      for::for(시작값;종료값;증가값){
+               반복할
+            }
+      ((배열과객체))
+      ((배열과전개연산자(...)))
+    4.js에서html요소만들기
+       creatElement
+     -->
+       <div id="dis"></div>
+    <script>
+        //1.
+        var num1 = 10 
+        var num1 = 30
+        let num2 = 20 
+            num2 = 30 //let으로 변수이름 다시 선언하면 에러발생
+        const num3 = 20 
+        //    num3 = 30 //값도재지정할수없음
+
+        //2.
+        let num4 = 10
+        let num5 = '10'
+        document.write(num4++)  //값을출력하고1증가
+        document.write(++num4)  //1증가부터먼저하고출력
+        document.write(`num4이 num5보다 큽니까? ${num4 > num5}<br>`)
+        document.write(`num4이 num5보다 크거나 같습니다? ${num4 >= num5}<br>`)
+        document.write(`num4이 num5보다 같습니다? ${num4 == num5}<br>`)
+        document.write(`num4이 num5보다 같습니까? ${num4 === num5}<br>`)
+        document.write(`num4이 num5보다 같지 않습니까? ${num4 !== num5}<br>`)
+        document.write(`num4이 10보다 크 고 num5가 20보다 큽니까? ${num4 > 10 && num5 > 20}<br>`)
+        document.write(`num4이 10보다 크 거나 같고 또는 num5가 20보다 큽니까? ${num4 >= 10 || num5 > 20}<br>`)
+        document.write(`num4이 10보다 크면 "크다" 그렇지 않으면 "작거나 같다" ${num4 > 10 ? "크다" : "작거나 같다"}<br>`)
+        
+        //3.
+        let avg = 90
+        switch(avg){
+            case 100 :
+            document.write('우수합니다')
+            break;
+            case 90 :
+            document.write('적당합니다')
+            break;
+            case 80 :
+            document.write('보통입니다')
+            break;
+            default:
+            document.write('해당하는 접수가 없습니다')
+        }
+        let num = 0
+        do{
+           num++
+        }while(num<=10)//10일될때까지돔//정확히10을하고싶으면<만사용
+        document.write('num은 얼마? :', num)
+
+        let name = ['a','b','c']
+        //name[0] => 'a'
+        for(let i=0; i<name.length;i++){
+            document.write(`${i} : ${name[i]}`)
+        }
+        let name2 = name //절대안됨!!!새로운값이아니라이름만틀리게함
+        let name3 = [...name] //name을복사
+        name[1] = 'k'
+        document.write(name[1])//k출력
+        document.write(name2[1])//k출력
+        document.write(name3[1])//원래값'b'출력
+
+        //4.
+        let dis = document.querySelector('#dis')
+        let ulBox = document.createElement('ul')
+        let liBox = document.createElement('li')
+        liBox.innerHTML = '안녕하세요'
+        liBox.classList.add('liBox')
+        ulBox.appendChild(liBox)
+        dis.appendChild(ulBox)
+        //appendChild한게이거와동일한세트임
+        // let html=''
+        // html = `<ul>
+        //          <li class='liBox' >안녕하세요</li>
+        //          </ul>
+        //     `
+        //     dis.innerHTML = html
+    </script>
+</body>
+</html>

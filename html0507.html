@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달창옥션</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+    .Box{
+       width: 60%;
+       height: 80vh;
+       margin: 20px auto;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       gap: 10px;
+       flex-direction: column;
+    }
+     .big{
+        width: 70%;
+        height: 70%;
+        border: 1px solid #999;
+        border-radius: 10px;
+        
+     }
+      .big img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+     .small{
+        width: 70%;
+        height: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+     }
+      .smallImg {
+        width: 30%;
+        height: 70%;
+        overflow: hidden;
+        box-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        border-radius: 5px;
+      }
+      .smallImg img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+     
+    </style>
+</head>
+<body>
+    <div class="Box">
+        <div class="big">
+          <img id="bigImg"  src="./img/mango1.jpg" alt="망고큰이미지1" />
+        </div>
+        <div class="small">
+        <div class="smallImg">
+            <img src="./img/mango1.jpg" alt="망고작이미지1" />
+          </div>
+          <div class="smallImg">
+            <img src="./img/mango2.jpg" alt="망고작이미지2" />
+          </div>
+          <div class="smallImg">
+            <img src="./img/mango3.jpg" alt="망고작이미지3" />
+          </div>
+          <div class="smallImg">
+            <img src="./img/mango4.jpg" alt="망고작이미지4" />
+          </div>
+        </div>
+    </div>
+    <div class="textBox">
+       
+    </div>
+    <script>
+        let bigImg = document.querySelector('#bigImg')
+        let smallImg = document.querySelectorAll('.smallImg img')
+
+           smallImg.forEach(function(item){
+           item.addEventListener('click',function(){
+             bigImg.src = item.src
+           })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3개 보이는 가운데 중심 슬라이드</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+    body{
+        background-color: black;
+    }
+    .wrap{
+      width: 900px;
+      padding: 20px;
+      margin: 30px auto;
+      border: 2px solid black;
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: right; 
+    }
+    .slider{
+        display: flex;
+        /* transform: translateX(-300px);*/
+    }
+    .slide{
+       width: 300px;
+       height: 300px;
+       flex-shrink: 0; 
+       transform: scale(0.8);
+       opacity: 0.5 ; 
+    }
+    .slide.on{
+        transform: scale(1);
+        opacity: 1;
+    }
+    .slide img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid #333;
+    }
+    button{
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        color: white;
+        border-radius: 50%;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    button:hover{
+        background-color: #333;
+    }
+     button:disabled{
+         background-color: white;
+         border: 1px solid black;
+         color: #ccc;
+         cursor: not-allowed;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="slider" id="slider"></div>
+         <button class="prev" onclick="prevSlide()">&lt;</button>
+         <button class="next" onclick="nextSlide()">&gt;</button>
+    </div>
+    <script>
+        class ImgSlider{
+            constructor(imgs){
+                this.imgs = imgs
+                this.index = 0
+                this.size = 300
+                this.slider = document.querySelector('#slider')
+
+                this.prevBtn = document.querySelector('.prev')
+                this.nextBtn = document.querySelector('.next')
+            }
+            makeSlide(){
+                let html = ''
+                this.imgs.forEach(function(item){
+                    html += `<div class="slide"><img src="${item}"></div> `
+                })
+                this.slider.innerHTML = html
+            }
+            move(){
+               this.slider.style.transform = `translateX(-${this.index * this.size}px)`
+
+               this.updateBtn()
+               this.updateOn()
+            }
+            next(){
+                if(this.index >= this.imgs.length-1){
+                    return 
+                } 
+                this.index++ 
+                this.move()
+            }
+            prev(){
+                if(this.index <= 0 ){
+                  return
+                }
+                this.index-- 
+                this.move()
+            }
+            updateBtn(){
+                this.nextBtn.disabled = this.index === this.imgs.length-1
+                this.prevBtn.disabled = this.index === 0 //
+            }
+            updateOn(){
+                let slides = document.querySelectorAll('.slide') 
+                slides.forEach(function(item){
+                   item.classList.remove('on')
+                })
+                slides[this.index]?.classList.add('on') 
+            }
+        }
+        let slideImgs = [
+            "./img/iphone17pro1.jpg",
+            "./img/iphone17pro2.jpg",
+            "./img/iphone17pro3.jpg",
+            "./img/iphone17pro4.jpg",
+            "./img/iphone17pro4.jpg"
+        ]
+
+        let mySlider = new ImgSlider(slideImgs)
+            mySlider.makeSlide()
+        
+        function prevSlide(){
+            mySlider.prev()
+        }
+
+        function nextSlide(){
+            mySlider.next()
+        }
+    </script>
+</body>
+</html>

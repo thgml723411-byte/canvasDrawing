@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .box{
+            overflow: hidden;
+            width: 300px;
+            height: 500px;
+            box-shadow: 1px 1px 3px rgba(0,0,0);
+        }
+
+        .box .img{
+            width: 300px;
+            object-fit: cover;
+            transition: all 0.2s;
+        }
+        .box .img:hover{
+            transform:scale(1.3);
+        }
+        .boxImg{
+        width: 300px;
+        height: 300px;
+        background-image: url('https://picsum.photos/id/10/200/300');
+        background-position: center ;
+        background-repeat: no-repeat;
+        background-size: cover;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="box">
+    <img class='img' src='./img/p.jpg' alt='p' />
+    <div class="boxImg"></div>
+    </div>
+</body>
+</html>

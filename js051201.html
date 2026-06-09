@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간</title>
+    <style>
+        .outBox{
+            width: 250px;
+            height: 90px;
+            overflow: hidden;
+            background-color: blue;
+            border-radius: 5px;
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+        h2{
+            text-align: center;
+        }
+        #day{
+            color: white;
+            font-size: 20px;
+            text-align: center;
+        }
+        #clock{
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>디지털시계</h2>
+    <div class="outBox">
+    <div id="day">여기는 년,월,일,요일 나타나는 자리</div>
+    <div id="clock">여기는 시간,분,초 나타나는 자리</div>
+    </div>
+    <script>
+       let clock = document.querySelector('#clock')
+       let day = document.querySelector('#day')
+
+       function nows(){
+            let today = new Date()//그냥사용할수없어서렛변수를사용함발생은하지만기억은하지못함자바스크립트규칙
+            let year = today.getFullYear()//년도를가지고와죠
+            let mon = today.getMonth()//0~11까지 숫자 발생
+            let da = today.getDate()
+            let sun = today.getDay()//0~6까지 0은일요일부터 6은토요일
+            let hh = today.getHours()//24시제
+            let mm = today.getMinutes()
+            let ss = today.getSeconds()
+             //한글로바꿔주는우린스위치사용할거지만이프도사용가능하지만복잡함계속물어야함
+             switch(sun){
+                case 0 : //0일때요
+                kk = '일요일'
+                break;
+                case 1 : 
+                kk = '월요일'
+                break;
+                case 2 : 
+                kk = '화요일'
+                break;
+                case 3 : 
+                kk = '수요일'
+                break;
+                case 4 : 
+                kk = '목요일'
+                break;
+                case 5 : 
+                kk = '금요일'
+                break;
+                case 6 : 
+                kk = '토요일'
+                break;//반드시이걸넣어야함나가
+             }
+
+             if(hh > 12){
+                aa = '오후'
+                hh = hh - 12
+             }else if(hh === 12){
+                aa = '오후'
+             }else{
+                aa = '오전'
+             }
+             //삼항연산자로이용해//07분을할려면10분되면0을안붙히는것까지//10보다작을때마다?
+             hh = hh >= 10 ? hh : `0${hh}`
+             mm = mm >= 10 ? mm : `0${mm}`
+             ss = ss >= 10 ? ss : `0${ss}`
+
+            day.innerHTML = `${year}년 ${mon+1}월 ${da}일 ${kk}`
+            clock.innerHTML = `${aa} ${hh}:${mm}:${ss}`
+       }//함수
+
+       //nows()//함수호출한번만찍어줄래//함수호출은괄호를넣어야함
+       setInterval(nows,1000)//그게아니라1초마다다시찍어//반복하는데시간을줘서반복//괄호를넣으면오류남
+    </script>
+</body>
+</html>

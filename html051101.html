@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서가앤쿡카피사이트</title>
+    <link rel="stylesheet" href="./reset.css" >
+    <style>
+    header{
+        width: 100%;
+        height: 80px;
+        /* background-color: rgba(8, 68, 18,0.7); */
+        color: white;
+    }
+    nav{
+        width: 100%;
+        height: 90px;
+        background-color: rgb(16, 54, 36);
+        transition: all 0.3s;
+        overflow: hidden;
+        position: fixed;
+        left: 0; top: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: flex-start;
+        /* align-items: center;*/
+        padding-top: 5px;
+    }
+    nav.on{
+        height: 490px;
+    }
+      .logo{
+        width: 50%;
+        height: 100%;
+        /* background-color: blue; */
+        font-size: 50px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+      }
+      .gnb{
+        width: 60%;
+        height: 90px;
+        /* background-color: aqua; */
+        display: flex;
+        justify-content: flex-start;
+        /* align-items: center; */
+      }
+       .gnb > li{
+        width: calc(100%/4);
+        height: 90px;
+        /* border: gold; */
+       }
+       .gnb > li > a{
+         width: 100%;
+         height: 100%;
+         display: flex;
+         justify-content: flex-start;
+         align-items: center;
+         font-size: 20px;
+         font-weight: bold;
+       }
+       .snb{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+       }
+       .snb > li {
+       width: 100%;
+       }
+       .snb > li > a {
+       text-align: left;
+       }
+
+        /* 햄버거바 */
+        .ham{
+            width: 10%;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            flex-direction: column;
+        }
+        .ham span{
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s;
+        }
+        .ham.on span:nth-child(1){
+            transform: rotate(45deg);
+        }
+        .ham.on span:nth-child(2){
+            opacity: 0;
+        }
+
+        /* 풀메뉴 전제 화면 메뉴 */
+        .fullmenu{
+            width: 100%;
+            height: 0;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            position: fixed;
+            left: 0; top: -100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+        .fullmenu.on{
+            /* display: flex; */
+            top: 0;
+            height: 100vh;
+        }
+        .closebtn{
+            position: absolute;
+            right: 40px; top: 30px;
+            width: 30px;
+            height: 30px;
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+         .fullGnb{
+            width: 80%;
+            height: 80%;
+            /* background-color: aqua; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+         }
+          .fullGnb > li{
+            width: calc(100%/4);
+            height: 100%;
+            /* background-color: blue; */
+          }
+          .fullGnb > li > a{
+            width: 100%;
+            height: 20%;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+          }
+          .fullsnb{
+            width: 100%;
+            height: 80%;
+            cursor: pointer;
+            font-size: 25px;
+            font-weight: bold;
+          }
+        
+
+        /* 섹션 */
+       section{
+          width: 100%;
+          height: 100vh;
+          display: none;
+          /* justify-content: center;
+          align-items: center; */
+          flex-direction: column; /* 자식 요소들을 위에서 아래로 쌓음 */
+          font-size: 90px;
+          font-weight: bold;
+       }
+        section.on{
+          display: flex;
+        }
+        .wrap{
+          /* padding-top: 0; */
+          width: 100%;
+        }
+        
+        .cooks1{
+           position: relative;
+        }
+        .cooks1img{
+          width: 100%;
+          height: 450px;
+          overflow: hidden; 
+         }
+         .cooks1img > img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.2);
+            transition: all 0.3s;
+        }
+        .cooks1 .title {
+          position: absolute; /* 이미지 위로 띄움 */
+          left: 50%; top: 55%;
+          transform: translate(-50%, -50%); 
+          /* width: 100%; */
+          text-align: center;
+          font-size: 32px;
+          font-weight: 700;
+          color: white;
+          z-index: 1;
+        }
+        .cooks1 .line {
+           position: absolute; /* 이미지 위로 띄움 */
+           left: 50%; top: 63%; /* 타이틀 아래 지점 */
+           transform: translate(-50%, -50%);
+           width: 40px;
+           height: 2px;
+           background-color: white;
+           z-index: 1;
+         }
+        .cooks1 .desc {
+           position: absolute; /* 이미지 위로 띄움 */
+           left: 50%; top: 65%;
+           transform: translateX(-50%); /* 가로 중앙 정렬 */
+           z-index: 1;
+           width: 100%;
+           font-size: 18px;
+           text-align: center;
+           line-height: 1.6;
+           color: white;
+         }
+        
+        /* #cook2{background-color: rgb(68, 233, 76)}
+        #cook01{background-color: rgb(68, 233, 76);}
+        #cook02{background-color: rgb(68, 233, 76);}
+        #cook03{background-color: rgb(68, 233, 76);}
+        #cook04{background-color: rgb(68, 233, 76);}
+        #cook05{background-color: rgb(68, 233, 76);}
+        #cook06{background-color: rgb(68, 233, 76);}
+        #cook07{background-color: rgb(68, 233, 76);}
+        #cook08{background-color: rgb(68, 233, 76);}
+        #cook09{background-color: rgb(68, 233, 76);}
+        #cook010{background-color: rgb(68, 233, 76);}
+        #cook011{background-color: rgb(68, 233, 76);} */
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="logo">
+             <a href="#" onclick="showpage()"><img src="https://www.seogaandcook.com/seogaandcook/images/common/logo.png" alt="logo"></a>
+            </div>
+
+            <!-- 메뉴시작 -->
+            <ul class="gnb">
+
+                <li><a href="#" onclick="showpage(0)">서가앤쿡</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="showpage(0)">스토리</a></li>
+                        <li><a href="#" onclick="showpage(1)">컨셉</a></li>
+                    </ul>
+                </li>
+                 
+                <li><a href="#" onclick="showpage(2)">메뉴</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="showpage(2)">세트메뉴1</a></li>
+                        <li><a href="#" onclick="showpage(3)">한정메뉴</a></li>
+                        <li><a href="#" onclick="showpage(4)">NEW플레이트</a></li>
+                        <li><a href="#" onclick="showpage(5)">ORIGINAL한상</a></li>
+                        <li><a href="#" onclick="showpage(6)">스테이크샐러드</a></li>
+                        <li><a href="#" onclick="showpage(7)">파히타</a></li>
+                        <li><a href="#" onclick="showpage(8)">파스타</a></li>
+                        <li><a href="#" onclick="showpage(9)">필라프/리조트</a></li>
+                        <li><a href="#" onclick="showpage(10)">피자</a></li>
+                        <li><a href="#" onclick="showpage(11)">사이드</a></li>
+                        <li><a href="#" onclick="showpage(12)">음료</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#" onclick="showpage()">매장</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="showpage()">매장검색</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#" onclick="showpage()">창업안내</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="showpage()">브랜드 경제력</a></li>
+                        <li><a href="#" onclick="showpage()">창업 절차 및 비용</a></li>
+                        <li><a href="#" onclick="showpage()">창엽 Q&A</a></li>
+                        <li><a href="#" onclick="showpage()">창업 상담 신청</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#" onclick="showpage()">고객문의</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="showpage()">유용한 질문(FAQ)</a></li>
+                        <li><a href="#" onclick="showpage()">고객의 소리</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+            <!-- 메뉴종료 -->
+
+            <!-- 햄버거바시작 -->
+            <div class="ham">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- 햄버거바종료 -->
+
+        </nav>
+    </header>
+
+        <!-- 풀메뉴시작 -->
+         <div class="fullmenu">
+            <div class="closebtn">X</div>
+
+            <ul class="fullGnb">
+                <li>
+                    <a href="#" onclick="showpage(0)">서가앤쿡</a>
+                    <ul class="fullsnb">
+                        <li><a href="#" onclick="showpage(0)">스토리</a></li>
+                        <li><a href="#" onclick="showpage(1)">컨셉</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" onclick="showpage(2)">메뉴</a>
+                     <ul class="fullsnb">
+                        <li><a href="#" onclick="showpage(2)">세트메뉴1</a></li>
+                        <li><a href="#" onclick="showpage(3)">한정메뉴</a></li>
+                        <li><a href="#" onclick="showpage(4)">NEW플레이트</a></li>
+                        <li><a href="#" onclick="showpage(5)">ORIGINAL한상</a></li>
+                        <li><a href="#" onclick="showpage(6)">스테이크샐러드</a></li>
+                        <li><a href="#" onclick="showpage(7)">파히타</a></li>
+                        <li><a href="#" onclick="showpage(8)">파스타</a></li>
+                        <li><a href="#" onclick="showpage(9)">필라프/리조트</a></li>
+                        <li><a href="#" onclick="showpage(10)">피자</a></li>
+                        <li><a href="#" onclick="showpage(11)">사이드</a></li>
+                        <li><a href="#" onclick="showpage(12)">음료</a></li>
+                     </ul>
+                </li>
+
+                <li>
+                    <a href="#" onclick="showpage()">매장</a>
+                    <ul class="fullsnb">
+                        <li><a href="#" onclick="showpage()">매장검색</a></li>
+                     </ul>
+                </li>
+
+                <li>
+                    <a href="#" onclick="showpage(0)">창업안내</a>
+                    <ul class="fullsnb">
+                        <li><a href="#" onclick="showpage()">브랜드 경제력</a></li>
+                        <li><a href="#" onclick="showpage()">창업 절차 및 비용</a></li>
+                        <li><a href="#" onclick="showpage()">창엽 Q&A</a></li>
+                        <li><a href="#" onclick="showpage()">창업 상담 신청</a></li>
+                     </ul>
+                </li>
+
+                <li>
+                    <a href="#" onclick="showpage()">고객문의</a>
+                    <ul class="fullsnb">
+                        <li><a href="#" onclick="showpage()">유용한 질문(FAQ)</a></li>
+                        <li><a href="#" onclick="showpage()">고객의 소리</a></li>
+                     </ul>
+                </li>
+            </ul>
+         </div>
+        <!-- 풀메뉴종료 -->
+
+    <!-- 색션시작 -->
+    <div class="wrap">
+        <section id="cook1" class="on">
+             <div class="cooks1">
+                <div class="cooks1img">
+                <img src="https://www.seogaandcook.com/seogaandcook/images/sub/sub01_01_visual.jpg" alt="스토리이미지1" />
+                </div>
+                  <h3 class="title">서가앤쿡</h3>
+                   <div class="line"></div>
+                  <p class="desc">서가앤쿡은 신선한 식자재들로 정성껏 요리하여 남녀노소 누구에게나 사랑받고 있습니다.</p>
+             </div>
+        </section>
+
+        <section id="cook2">
+            <div class="cooks2">
+            <h2 class="title">CONCEPT</h2>
+            <img src="https://www.seogaandcook.com/seogaandcook/images/sub/sub01_02_img01.jpg" alt="컨셉이미지1"/>
+            <img src="https://www.seogaandcook.com/seogaandcook/images/sub/sub01_02_img02.jpg" alt="컨셉이미지2"/>
+            <img src="https://www.seogaandcook.com/seogaandcook/images/sub/sub01_02_img03.jpg" alt="컨셉이미지3"/>
+            <img src="https://www.seogaandcook.com/seogaandcook/images/sub/sub01_02_img04.jpg" alt="컨셉이미지4"/>
+            </div>
+        </section>
+
+        <section id="cook01">세트메뉴1 페이지입니다</section>
+        <section id="cook02">한정메뉴 페이지입니다</section>
+        <section id="cook03">NEW플레이트 페이지입니다</section>
+        <section id="cook04">ORIGINAL한상 페이지입니다</section>
+        <section id="cook05">스테이크샐러드 페이지입니다</section>
+        <section id="cook06">파히타 페이지입니다</section>
+        <section id="cook07">파스타 페이지입니다</section>
+        <section id="cook08">필라프/리조트 페이지입니다</section>
+        <section id="cook09">피자 페이지입니다</section>
+        <section id="cook010">사이드 페이지입니다</section>
+        <section id="cook011">음료 페이지입니다</section>
+    </div>
+    <!-- 색션종료 -->
+
+    <script>
+      let gnb = document.querySelector('.gnb')
+      let nav = document.querySelector('.nav')
+      let ses = document.querySelectorAll('.wrap>section')
+      let ham = document.querySelector('.ham')
+      let fullmenu = document.querySelector('.fullmenu')
+      let closebtn = document.querySelector('.closebtn')
+
+      //메뉴 마우스 올릴때 사라졌을때
+      gnb.addEventListener('mouseenter',function(){
+        nav.classList.add('on')
+      })
+
+      gnb.addEventListener('mouseleave',function(){
+        nav.classList.remove('on')
+      })
+       
+      //풀메뉴 클릭할때
+      ham.addEventListener('click',function(){
+        ham.classList.toggle('on')
+        fullmenu.classList.toggle('on')
+      })
+
+      closebtn.addEventListener('click',function(){
+        ham.classList.remove('on')
+        fullmenu.classList.remove('on')
+      })
+      
+      //섹션(gnb,snb) 클릭할때
+      function showpage(num){
+          ses.forEach(function(item){
+            item.classList.remove('on')
+          })
+          ses[num].classList.add('on')
+          ham.classList.remove('on')
+          fullmenu.classList.remove('on')
+
+          //observe 감시자
+      }
+    </script>
+</body>
+</html>

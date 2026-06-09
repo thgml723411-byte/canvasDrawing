@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <style>
+
+        h2{
+
+            color: darkblue;
+
+            text-align: center;
+
+            font-size: 40px;
+
+        }
+
+
+ 
+
+        h4{
+
+            text-align: center;
+
+            color: black;
+
+            font-size: 20px;
+
+        }
+
+
+ 
+
+        .container{
+
+            width: 400px;
+
+            background-color: #ccc;
+
+            color: #333;
+
+            margin: 0 auto;
+
+            padding: 10px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            flex-direction: column;
+
+        }
+
+        span{
+
+            color: red;
+
+            font-weight: bold;
+
+            font-size: 17px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h2>도서목록</h2>
+
+    <select id="sel">
+
+        <option value="10000" >만원이상</option>
+
+        <option value="20000">이만원이상</option>
+
+        <option value="30000">삼만원이상</option>
+
+    </select>
+
+    <button id="btn">확인</button>
+
+    <div class="container">
+
+
+ 
+
+    </div>
+
+    <script>
+
+    //
+
+       let books = [
+
+        { title : "html기초 습득하기", page : 350, price : 22000 },
+
+        { title : "css기초 습득하기", page : 550, price : 27000 },
+
+        { title : "js기초 습득하기", page : 650, price : 32000 },
+
+        { title : "jQuery기초 습득하기", page : 250, price : 19000 },
+
+       ]
+
+        let container = document.querySelector(".container")
+
+        let sel = document.querySelector("#sel")
+
+        let btn = document.querySelector("#btn")
+
+    btn.onclick = function(){
+
+        container.innerHTML = ''  
+
+        books.forEach(function(item){
+
+        if(item.price >= Number(sel.value) ){
+
+            console.log(sel.value)
+
+            // 출력하기
+
+            // document.write()  :: 꾸미는것 안됨(css 사용불가)
+
+            container.innerHTML += `<div><span>${item.title}</span>, ${item.page}, ${item.price}</div>`
+
+        }
+
+        })
+
+    }
+
+   
+
+    // 2만 5천원 이상 책이름, 페이지 모두 출력
+
+   
+
+    </script>
+
+</body>
+
+</html>

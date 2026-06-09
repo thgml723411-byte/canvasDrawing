@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성자함수 영화표 예매</title>
+    <!-- 라벨성질을바꾸는것 -->
+     <style>
+        label{
+          display: block;/* 밑으로가라 */
+        }
+     </style>
+</head>
+<body>
+   <div class="wrap">
+      <h2>영화 선택</h2>
+      <label>
+        <input type="radio" name="movie" value="범죄도시" />
+        범죄도시
+      </label>
+      <label>
+        <input type="radio" name="movie" value="왕사남" />
+        왕과 사는 남자
+      </label>
+      <label>
+        <input type="radio" name="movie" value="어벤져스" />
+        어벤져스
+      </label>
+      <label>
+        <input type="radio" name="movie" value="아바타" />
+        아바타
+      </label>
+      <label>
+        <input type="radio" name="movie" value="기생충" />
+        기생충
+      </label>
+      <br>
+      <h2>회원 상태 선택</h2>
+      <label>
+        <input type="radio" name="state" value="청소년" />
+        청소년 (30%할인)
+      </label>
+     <label>
+        <input type="radio" name="state" value="국가유공자" />
+        국가유공자 (50%할인)
+      </label>
+      <label>
+        <input type="radio" name="state" value="경로우대" />
+        경로우대 (20%할인)
+      </label>
+      <label>
+        <input type="radio" name="state" value="일반" />
+        일반
+      </label>
+
+      <button onclick="checking()">예매하기</button>
+      <div id="dis"></div>
+      <div id="total"></div>
+
+  </div>
+  <script>
+    class Movie{
+        constructor(title,state){
+           this.title = title
+           this.state = state
+           this.price = 11000
+        }
+        teemDoscpimt(){
+            return this.price *0.7
+        }
+        heroDiscount(){
+            return this.price *0.5
+        }
+        oldDiscount(){
+            return this.price *0.8
+        }
+        normalDiscount(){
+            return this.price
+        }
+    }
+
+    let movieCart = []
+
+    function checking(){
+        let movie = document.querySelector('input[name="movie"]:checked')
+        let state = document.querySelector('input[name="state"]:checked')
+        let dis = document.querySelector('#dis')
+        let total = document.querySelector('#total')
+    
+        if(!movie || !state){
+            dis.innerHTML = '영화와 회원상태를 선택해주세요'
+            return
+        }
+
+        let item = new Movie(movie.value,state.value)
+        let disPrice = 0
+        switch(item.state){
+            case '청소년' : 
+            disPrice = item.teemDoscpimt()
+            break
+            case '국가유공자' : 
+            disPrice = item.heroDiscount()
+            break
+            case '경로우대' : 
+            disPrice = item.oldDiscount()
+            break
+            case '일반' : 
+            disPrice = item.normalDiscount()
+            break
+        }//if보다덜복잡함
+
+        //쌓아두는변수배열로
+        movieCart.push({title : item.title, state : item.state, price : disPrice})
+        let html = ''
+        let sum = 0
+        movieCart.forEach(function(mo){
+            html += `<div> 영화제목 : ${mo.title}<br> 회원상태 : ${mo.state}<br> 할인적용가격 : ${Number(mo.price).toLocaleString()}<br> </div>`
+            //dis.innerHTML여기안에다넣어줘도틀린건아닌데속도가현저히느려져서변수로바꿔줌
+            sum += mo.price
+        })
+        dis.innerHTML = html //여기로뻄
+        total.innerHTML = sum.toLocaleString()
+    }
+
+  </script>
+  
+</body>
+</html>

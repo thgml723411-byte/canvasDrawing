@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스</title>
+    <link rel="stylseeht" href="./reset.css">
+    <style>
+       body {
+        background-color: black;
+       }
+       .wrap {
+        width: 900px;
+        height: 500px;
+        border: 5px solid hotpink;
+        margin: 50px auto;
+        position: relative;
+        cursor: none; /* 마우스화살표사자리게하는 */
+       }
+       .text {
+         color: hotpink;
+         font-size: 40px;
+         font-weight: bold;
+
+         position: absolute; 
+         left: 0; top: 0;
+         pointer-events: none;
+
+         display: none; 
+
+         transition: all 0.1s;
+       }
+    </style>
+</head>
+<body>
+    <div class="wrap"> 
+        <div class="text">안녕하세요</div>
+    </div>
+    <script>
+      let wrap = document.querySelector(".wrap")
+      let text = document.querySelector(".text")
+
+      //마우스는 가만히 있지 않고 계속 움직입니다. 
+      //mousemove 이벤트는 마우스가 단 1픽셀만 움직여도 즉시 감지하여 중괄호 { } 안의 코드를 계속해서 실행(호출)합니다
+      wrap.addEventListener('mousemove', function(e){
+        text.style.left = e.offsetX + "px"
+        text.style.top = e.offsetY + "px"
+      })
+
+      //mouseenter: 마우스가 박스 안으로 들어오면 ➔ 글자를 보여준다 (block).
+      wrap.addEventListener("mouseenter", function(){
+        text.style.display = "block"
+      })
+
+
+      //mouseleave: 마우스가 박스 바깥으로 나가면 ➔ 글자를 숨긴다 (none).
+      wrap.addEventListener("mouseleave", function(){
+         text.style.display = "none"
+      })
+    </script>
+</body>
+</html>

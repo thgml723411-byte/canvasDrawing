@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    h2{
+        text-align: center;
+        font-size: 45px;
+        color: darkblue;
+    }
+    h3{
+        text-align: center;
+        font-size: 25px;
+        color: rgb(12, 12, 68);
+    }
+    .outbox{
+        width: 500px;
+        background-color: skyblue;
+        border: 1px solid rgb(119, 153, 167);
+        border-radius: 10px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+    .wrap{
+        width: 500px;
+        background-color: pink;
+        border: 1px solid rgb(224, 194, 199);
+        color: red;
+        border-radius: 10px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+    </style>
+</head>
+<body>
+    <h2>출석부</h2>
+    <h3>출석한자</h3>
+    <div class="outbox">
+      
+    </div>
+    <h3>결석한자</h3>
+    <div class="wrap">
+
+    </div>
+    <script>
+
+        //출석한사람만출력
+        
+        //let outbox = document.getElementById('outbox')
+        let outbox = document.querySelector('.outbox')
+        let wrap = document.querySelector('.wrap')
+
+        let students = [
+            {name : '길동', grade : 1, isworking : true},
+            {name : '순신', grade : 2, isworking : false},
+            {name : '복자', grade : 2, isworking : true},
+            {name : '철수', grade : 3, isworking : true},
+        ]
+
+        
+        students.forEach(function(item){
+         if(item.isworking === true){
+            outbox.innerHTML += `<div>이름 : ${item.name}, 학년 : ${item.grade}학년, 출석여부 : 출석 </div>`
+         }else{
+            wrap.innerHTML += `<div>이름 : ${item.name}, 학년 : ${item.grade}학년, 출석여부 : 결석 </div>`
+         }
+        })
+         
+    </script>
+</body>
+</html>

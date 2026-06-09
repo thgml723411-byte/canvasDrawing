@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json 기본</title>
+</head>
+<body>
+    <!--
+     json() javaScript 객체나배열로파싱해주는함수
+     객체 let a = {"name":"홍길동","ege":20} 따움표해주는게json임
+     -->
+    <h2>json파싱</h2>
+    <div id="dis"></div>
+    <script>
+     //json문자열 :: javascript는알지못하는문자열상태::이게json파일
+     let jitem = `[
+          {"name" : "사과" , "price" : 500},
+          {"name" : "바나나" , "price" : 1000}
+     ]` 
+     //이건메모장역활임 
+
+     //json문자열을javascript객체로변환시켜야함
+     let data = JSON.parse(jitem)
+     //data::javascript객체
+     //data = [{name : "사과",parice:500},
+     //       [{name : "바나나",parice:1000}]
+
+     let dis = document.getElementById("dis")
+       data.forEach(function(item){
+           dis.innerHTML += `${item.name} : ${item.price} <br>`
+       })
+    </script>
+</body>
+</html>

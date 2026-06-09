@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동영상 슬라이드</title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./html060101.css">
+    <script></script>
+</head>
+    </style>
+</head>
+<body>
+    <nav class="nav">
+            <div class="logo">
+                VIDEO
+            </div>
+            <button class="hamburger">
+                ☰
+            </button>
+            <div class="menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+    </nav>
+
+    <div class="wrap">
+        <div class="slider">
+
+                <!-- 3 복제 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car3.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>Third Motion</h2>
+                        <p>세 번째 동영상 문구입니다</p>
+                    </div>
+                </div>
+                <!-- 1 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car4.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>First Video</h2>
+                        <p>첫 번째 동영상 타이틀입니다</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car2.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>Second Scene</h2>
+                        <p>두 번째 동영상 설명입니다</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car3.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>Third Motion</h2>
+                        <p>세 번째 동영상 문구입니다</p>
+                    </div>
+                </div>
+                <!-- 복제 1 -->
+                <div class="slide">
+                    <video autoplay muted loop playsinline>
+                        <source src="./video/car4.mp4" type="video/mp4">
+                    </video>
+
+                    <div class="textBox">
+                        <h2>First Video</h2>
+                        <p>첫 번째 동영상 타이틀입니다</p>
+                    </div>
+                </div>
+        </div> <!-- slider end -->
+        <!-- 좌우 버튼 구현 할것 -->
+         <button class="btn prev">&lt;</button>
+         <button class="btn next">&gt;</button>
+    </div> <!-- wrap end -->
+</html>

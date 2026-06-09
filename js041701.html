@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        let com = []
+        let sum = 0;
+
+        for(let i=0; i<3; i++){
+        com[i] = Number(prompt('숫자를 입력해주세요'))
+        }
+
+        com.push(55)
+
+        for(let i=0; i<com.length; i++){
+        sum = sum + com[i]
+        }
+
+        document.write(sum,'<br>')
+
+
+    </script>
+</body>
+</html>

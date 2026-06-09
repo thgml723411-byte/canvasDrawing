@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+    *{margin: 0; padding: 0;}
+
+    .topbox{
+     position: fixed;
+     width: 100%;
+     height: 50px;
+     background-color: black;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 10;
+    }
+      .logbox{
+        width: 35%;
+        height: 100%;
+        /* background-color: red; */
+        display: flex;
+        justify-content:start;
+        align-items: center;
+        
+      }
+        .logbox img{
+          width: 100px;
+          object-fit: contain; 
+          margin: 0 auto;    
+
+      }
+      .menubox{
+        width: 45%;
+        height: 100%;
+        /* background-color: gold; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        color: white;
+      }
+        .menubox .orange{
+           color: orangered;
+        }
+      .korbox{
+        width: 20%;
+        height: 100%;
+        /* background-color: blue; */
+        /* text-align: right;
+        line-height: 50px; */
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        color: white;
+        padding-right: 20px;
+      }
+    .mainimgbox{
+        position: relative;
+        width: 100%;
+        height: 250px;
+        /* background-color: gold; */
+        background-image: url(./img/eee.jpeg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    } 
+       .textbox{
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        height: 50%;
+        transform: translateY(-50%);
+        /* background-color: gold; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       } 
+
+
+       .textbox .orange{
+        color: orangered;
+        font-size: 20px;
+       }
+       .textbox .white{
+        color: white;
+        font-size: 30px;
+       }
+       .subMenuBox{
+        width: 75%;
+        height: 35px;
+        background-color: rgba(255,255,255,0.6);
+        position: absolute;
+        left: 50%; bottom: 0px;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+       }
+      
+    .box{
+        width: 25%;
+        height: 100%;
+        background-color: aqua;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .subMenuFirst{
+          color: white;
+          background-color: orangered;
+          width: 25%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center
+       }
+
+        .ball{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background-color: orangered;
+            color: white;
+            border-radius: 50%;
+            z-index: 10;
+        }
+    .title{
+        font-size: 30px;
+
+    }
+
+    .line{
+        width: 150px;
+        height: 2px;
+        background-color: orangered;
+        margin-bottom: 30px;
+    }
+
+
+    table{
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 900px;
+        margin: 0;
+    }
+    tr,td,th{
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    }
+    th{
+    background-color: orangered;
+    color: white;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- 제일 상단 블랙 박스 -->
+    <div class="topbox">
+     <div class="logbox"><img src="./img/ee.png" alt="logimg" /></div>
+     <div class="menubox">
+        <div class="orange">menu1</div>
+        <div>menu2</div>
+        <div>menu3</div>
+        <div>menu4</div>
+        <div>menu5</div>
+        <div>menu6</div>
+     </div>
+     <div class="korbox">kor</div>
+    </div>
+    <!-- 상단 블랙 박스 끝 -->
+
+    <!-- 메인 이미지 박스 시작 -->
+    <div class="mainimgbox">
+        <div class="textbox">
+            <h2 class="orange">스마트테크 코리아</h2>
+            <h2 class="white">참가안내</h2>
+        </div>
+        <div class="subMenuBox">
+            <div class="subMenuFirst">참가안내</div>
+            <div class="box">온라인부스참가신청</div>
+            <div class="box" >스폰서쉽프로그램</div>
+            <div class="box">홍보자료</div>
+        </div>
+
+    </div><!-- 메인 이미지 박스 종료 -->
+
+    <!-- 텍스트 시작 -->
+    <div class="title">
+        <div>참가신청 절차</div>
+       <div>Exhibitor Registration Process</div>
+    </div>
+    <!-- 텍스트 종료 -->
+
+    <!-- 선 시작 -->
+    <div class="line"></div>
+    <!-- 선 종류 -->
+
+    <!-- 박스1 시작 -->
+    <!-- 박스1 종료 -->
+
+    <!-- 박스2,3 시작 -->
+    <!-- 박스2,3 종료 -->
+
+      
+     <!-- 표 시작 -->
+     <table class="ta">
+        <tr>
+            <th>STEP1①</th>
+            <th>STEP2②</th>
+            <th>STEP3③</th>
+            <th>STEP4④</th>
+            <th>STEP5⑤</th>
+        </tr>
+       
+        <tr>
+            <td>가입회원 가입/로그인</td>
+            <td>온라인 참가신청</td>
+            <td>참가신청서<br>작성 및 제출</td>
+            <td>계약금 50% 납입<br>접수 1주일내</td>
+            <td>잔금 50% 납입<br>(-2025.04.25)</td>
+        </tr>
+
+    </table>
+     <!-- 표 종료 -->
+</body>
+</html>

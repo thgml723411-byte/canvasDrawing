@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery채용절절차카피사이트</title>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="../reset.css">
+      <style>
+
+        /* ---------메뉴상단--------- */
+        header {
+        width: 100%;
+        height: 80px; /* 💡 남색 버튼의 높이를 고려해 헤더 높이를 80px로 살짝 키웁니다 */
+        background-color: white;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        }
+        header > div {
+        width: 100%;
+        max-width: 1100px; /* 💡 하단 .wrap의 max-width와 완벽 일치 (위아래 정렬선이 일치하는 비결) */
+        height: 100%;
+        margin: 0 auto;    /* 💡 화면 정중앙 배치 */
+        padding: 0 40px;   /* 💡 하단 .wrap의 padding과 완벽 일치 */
+        
+        /* 💡 로고는 맨 왼쪽 끝, 메뉴 글자들은 맨 오른쪽 끝으로 정렬 */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        header h1 img {
+        height: 35px;
+        }
+
+        .nav {
+          display: flex;
+          gap: 40px; 
+        }
+
+        .nav a {
+        color: #333;
+        font-size: 15px;
+        font-weight: 500;
+        }
+
+        .hamBtn {
+            width: 40px;
+            height: 30px;
+            cursor: pointer;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .hamBtn span{
+        width: 100%;
+        height: 4px;
+        background-color: black;
+        transition: all 0.3s;
+    }
+     @media (max-width: 768px){
+    .hamBtn{
+        display: flex;
+    }
+    .nav{
+        /* 기존 position: absolute에서 fixed로 변경하여 화면에 고정 */
+        position: fixed; 
+        display: none;
+        width: 100%;
+        /* 화면 전체를 채우기 위해 height 추가 */
+        height: 100vh; 
+        flex-direction: column;
+        gap: 0;
+        /* 좌측과 상단 여백을 0으로 맞춤 */
+        left: 0;
+        top: 0; 
+        background-color: white;
+        /* 다른 요소보다 위에 보이도록 z-index 설정 */
+        z-index: 9999; 
+        padding-top: 80px;
+    }
+    .nav.on{
+       /* 햄버거바를 클릭했을 때 전체 화면 표시 */
+       display: flex;
+       flex-direction: column;
+    }
+    .nav a{
+        padding: 20px;
+        display: block;
+    }
+    .hamBtn.on{
+        /* X 버튼이 메뉴보다 위에 보이도록 설정 */
+        z-index: 10000; 
+    }
+    .hamBtn.on span:nth-child(1){
+       transform: translate(-10px,12px) rotate(45deg);
+    }
+    .hamBtn.on span:nth-child(2){
+       opacity: 0;
+    }
+    .hamBtn.on span:nth-child(3){
+       transform: translate(-10px,-12px) rotate(-45deg);
+    }
+}
+       /* ---------메뉴상단--------- */
+
+       /*----------아코디언메뉴--------*/
+       .wrap{
+        width: 100%;
+        max-width: 1100px; /* 💡 정중앙 배치를 위한 최대폭 추가 */
+        margin: 60px auto;
+        padding: 0 40px;
+        }
+        .wrap h2 {
+        font-size: 28px;
+        color: #000040; /* 짙은 남색 */
+        font-weight: 700;
+        margin-bottom: 8px;
+        }
+        .wrap h3 {
+        font-size: 15px;
+        color: #666;
+        font-weight: 400;
+        margin-bottom: 60px;
+        }
+
+        /* FAQ 대그룹 (카테고리 vs 질문 리스트 가로 배치) */
+        .group {
+        display: flex;
+        gap: 80px; /* 카테고리와 질문 영역 사이의 간격 */
+        margin-bottom: 50px;
+        }
+
+        /* 왼쪽 카테고리 캡슐 디자인 */
+        .group .category {
+        width: 100px;
+        height: 36px;
+        background-color: #000040;
+        color: #fff;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0; /* 크기 고정 */
+        margin-top: 14px; /* 💡 오른쪽 질문 첫 줄과 높이 맞춤 */
+        }
+
+        /* 오른쪽 질문 리스트 영역 */
+        .group .list {
+        flex-grow: 1; /* 남은 영역을 가득 채움 */
+        }
+
+        /* 개별 QNA 상자 */
+        .qna {
+        border-bottom: 1px solid #eee;
+        }
+
+        /* 🌟 [누락 해결] 질문 영역 가로 배치 및 양 끝으로 찢기 */
+        .qna .question {
+        padding: 22px 10px 22px 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #222;
+        cursor: pointer;
+        
+        /* 💡 글자는 왼쪽, 아이콘은 오른쪽 끝으로 정렬해 주는 핵심 코드 */
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        }
+
+        /* 🌟 아이콘 기본 스타일 */
+        .icon{
+            font-size: 12px;
+            color: #aaa;
+            display: inline-block; /* 회전 애니메이션이 먹히도록 설정 */
+            transition: all 0.3s;
+        }
+
+        /* 🌟 [수정] 클릭해서 부모(.qna)에 .on이 붙었을 때 글자색 변경 */
+        .question.on {
+            color: #000040;
+        }
+
+        /* 🌟 [수정] 클릭해서 부모(.qna)에 .on이 붙었을 때 아이콘 회전 */
+        .question.on .icon{
+            transform: rotate(180deg);
+        }
+
+        /* 답변 영역 (기본적으로 숨김) */
+        .answer{
+            display: none;
+            font-size: 15px;
+            padding: 0 0 20px 0; /* 아래쪽으로만 깔끔하게 여백 */
+            font-weight: 500;
+            line-height: 1.7;
+            color: #555;
+        }
+/*---------아코디언메뉴------------*/
+      </style>
+</head>
+<body>
+<!------------상단------------->
+    <header>
+      <div>
+       <h1>
+          <a href="#"><img src="../img/genstarmatelogo.png" alt="로고"/></a>
+       </h1>
+        <button class="hamBtn">
+           <span></span>
+           <span></span>
+           <span></span>
+        </button>
+        <nav class="nav">
+            <a href="#">회사 홈페이지</a>
+            <a href="#">회사 소개</a>
+            <a href="#">인사제도</a>
+            <a href="#">채용 절차</a>
+        </nav>
+      </div>
+    </header>
+<!-----------상단----------->
+
+<!---------- 아코디언메뉴시작------------->
+    <div class="wrap">
+       <h2>자주 묻는 질문</h2>
+       <h3>우리 기업 채용의 모든 것을 알려드려요</h3>
+
+    <!-- 첫 번째 그룹: 채용 과정 -->
+  <div class="group">
+    <div class="category">채용 과정</div>
+    <div class="list">
+      <div class="qna">
+
+        <div class="question">Q. 관계사 등 회사별로 중복 지원이 가능한가요?
+            <span class="icon">▼</span>
+        </div>
+        <div class="answer">A. 전환형 인턴으로 모집하는 공채 신입사원은 젠스타메이트 및 관계사가 통합해서 채용을 진행하고 있습니다</div>
+      </div>
+
+      <div class="qna">
+        <div class="question">Q. 과거에 지원한 적이 있는데 재 지원이 가능한가요?
+            <span class="icon">▼</span>
+        </div>
+        <div class="answer">A. 특별한결격사유가없다면재지원가능합니다</div>
+      </div>
+
+      <div class="qna">
+        <div class="question">Q. 현재 재직중인데, 면접 일정 조율 등 가능할까요?
+            <span class="icon">▼</span>
+        </div>
+        <div class="answer">A. 면접 일정은 회사의 상황과 면접관의 스케줄을 고려하여 충분히 조율 가능합니다</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 두 번째 그룹: 지원서 작성 -->
+  <div class="group">
+    <div class="category">지원서 작성</div>
+    <div class="list">
+      <div class="qna">
+        <div class="question">Q. 입사지원은 우편이나 방문제출도 가능한가요?
+            <span class="icon">▼</span>
+        </div>
+        <div class="answer">A. 입사지원은 온라인 지원만 가능합니다.</div>
+      </div>
+      <div class="qna">
+        <div class="question">Q. 지원서 수정 및 삭제가 가능한가요?
+            <span class="icon">▼</span>
+        </div>
+        <div class="answer">A. 제출하신 입사지원서의 수정 및 삭제는 최종제출 하신 후에는 수정이 불가합니다.</div>
+      </div>
+      <div class="qna">
+        <div class="question">Q. 입사 지원 후 서류전형 합격자에게는 통보가 되나요?
+            <span class="icon">▼</span>
+        </div>
+        <div class="answer">A. 입사지원서에 작성한 핸드폰과 이메일로 개별 통보합니다.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------------- 아코디언메뉴시작------------->
+    <script>
+    $(function(){
+        //햄버거버튼을클릭하면보였다안보였다
+        $('.hamBtn').on('click', function(){
+            $('.nav').toggleClass("on")
+            $('.hamBtn').toggleClass("on")
+        })
+    })
+
+    $(function(){
+        //아코디언클릭
+           $('.question').on('click',function(){
+               $(this).toggleClass('on')
+               $(this).next().stop().slideToggle()
+           })
+        })
+    </script>
+</body>
+</html>

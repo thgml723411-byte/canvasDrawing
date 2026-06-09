@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Card 01",
+        "desc": "화면 크기에 따라 글자 크기와 박스 크기가 자연스럽게 변합니다.",
+        "btn": "View More"
+    },
+    {
+        "title": "Card 02",
+        "desc": "PC에서는 4칸, 태블릿에서는 2칸, 모바일에서는 1칸으로 변경됩니다.",
+        "btn": "View More"
+    },
+    {
+        "title": "Card 03",
+        "desc": "grid는 전체 배치를 담당하고, flex는 내부 정렬을 담당합니다.",
+        "btn": "View More"
+    },
+    {
+        "title": "Card 04",
+        "desc": "clamp를 쓰면 글자나 여백이 너무 작거나 커지지 않게 조절할 수 있습니다.",
+        "btn": "View More"
+    }
+]

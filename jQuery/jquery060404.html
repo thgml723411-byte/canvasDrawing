@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습예제2 간단한 장바구니 만들기 </title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+     .rowItem{
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+     }
+     .qty{
+        width: 50px;
+     }
+    </style>
+</head>
+<body>
+    <h2>간단한 장바구니</h2>
+    <div class="form">
+       <input class="newName" placeholder="상품명(예:무선키보드)"/>
+       <input class="newPrice" placeholder="가격(예:가격숫자만)"/>
+       <button class="btn">추가</button>
+    </div>
+    <div class="box">
+      <div class="rowItem" data-price="19000">
+         <span class="name">무선 마우스</span>
+         <div>
+            <button class="minus">-</button>
+            <input class="qty" value="1"/>
+            <button class="plus">+</button>
+         </div>
+         <span class="sub">19,000원</span>
+      </div>
+
+      <div class="rowItem" data-price="10000">
+         <span class="name">무선 키보드</span>
+         <div>
+            <button class="minus">-</button>
+            <input class="qty" value="1"/>
+            <button class="plus">+</button>
+         </div>
+         <span class="sub">10,000원</span>
+      </div>
+
+    </div>
+    <p>
+        배송:
+        <select id="ship">
+            <option value="0">무료배송</option>
+            <option value="3000">일반(3,000)</option>
+            <option value="8000">지역(8,000)</option>
+        </select>
+    </p>
+    <p>
+        총합계 : <strong id="total">0</strong>원
+    </p>
+    <script>
+$(function(){
+    // 페이지 로드 시 최초 1회 전체 계산 실행 (초기값 0원 방지)
+    calcTotal();
+
+    // 1. 플러스 버튼 이벤트
+    $('.box').on("click", '.plus', function(){
+        const row = $(this).closest('.rowItem'); // './' 제거
+        const qt = row.find('.qty');
+        qt.val(Number(qt.val()) + 1); // 수량 증가
+        calcRow(row);
+        calcTotal(); // 주석 해제 및 호출
+    });
+
+    // 2. 마이너스 버튼 이벤트 (오류 수정)
+    $('.box').on("click", '.minus', function(){ // '.minus'로 수정
+        const row = $(this).closest('.rowItem'); // './' 제거
+        const qt = row.find('.qty');
+        // Math.max를 활용해 0 미만으로 내려가지 않도록 제어
+        qt.val(Math.max(0, Number(qt.val()) - 1)); 
+        calcRow(row);
+        calcTotal(); // 주석 해제 및 호출
+    });
+
+    // 3. 한 줄 계산 함수
+    function calcRow(row){
+        const price = Number(row.data("price"));
+        const qty = Math.max(0, Number(row.find(".qty").val()));
+        // 금액 포맷 변경 후 반영
+        row.find('.sub').text((price * qty).toLocaleString() + "원");
+    }
+
+    // 4. [신규 구현] 전체 총합계 계산 함수 (배송비 포함)
+    function calcTotal() {
+        let productTotal = 0;
+
+        // 각 행을 돌면서 상품들의 금액 합산
+        $('.rowItem').each(function() {
+            const price = Number($(this).data("price"));
+            const qty = Number($(this).find(".qty").val()) || 0;
+            productTotal += (price * qty);
+        });
+
+        // 배송비 가져오기
+        const shipFee = Number($('#ship').val());
+        const finalTotal = productTotal + shipFee;
+
+        // 총합계 화면에 매핑
+        $('#total').text(finalTotal.toLocaleString());
+    }
+
+    // 5. [신규 구현] 배송 옵션 변경 시 총합계 재계산
+    $('#ship').on('change', function() {
+        calcTotal();
+    });
+
+    // 6. [신규 구현] 상단 폼 상품 추가 버튼 기능
+    $('.form .btn').on('click', function() {
+        const nameInput = $('.newName');
+        const priceInput = $('.newPrice');
+        
+        const name = nameInput.val().trim();
+        const price = Number(priceInput.val().trim());
+
+        // 유효성 검사 (빈값이나 숫자가 아닌 경우 차단)
+        if(!name || isNaN(price) || price <= 0) {
+            alert('상품명과 올바른 가격 숫자를 입력해 주세요.');
+            return;
+        }
+
+        // 새 행 HTML 동적 생성 (수량 기본값 1로 세팅)
+        const newItem = `
+          <div class="rowItem" data-price="${price}">
+             <span class="name">${name}</span>
+             <div>
+                <button class="minus">-</button>
+                <input class="qty" value="1"/>
+                <button class="plus">+</button>
+             </div>
+             <span class="sub">${price.toLocaleString()}원</span>
+          </div>
+        `;
+
+        // 목록에 추가 후 입력창 비우기 및 전체 재계산
+        $('.box').append(newItem);
+        nameInput.val('');
+        priceInput.val('');
+        calcTotal();
+    });
+});
+    </script>
+</body>
+</html>

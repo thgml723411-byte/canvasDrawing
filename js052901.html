@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오픈웨더 날씨 API</title>
+<link rel="stylesheet" href="./reset.css">
+<style>
+    body{
+        background-image: linear-gradient(rgb(52, 70, 78), rgb(40, 155, 231));
+        width: 100%;
+        height: 100vh; 
+    }
+    h1{ 
+        margin-top: 80px;
+        margin-bottom: 80px;
+        text-align: center;
+        color: white;
+    }
+    .container {
+        display: flex;
+        gap: 30px; 
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+    .warp{
+        background-color: rgba(255, 255, 255, 0.15);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 250px;
+        color: white;
+    }
+    .warp h2{
+        margin: 0 0 10px 0;
+        font-size: 22px;
+    }
+    .warp img{
+        width: 80px;
+        height: 80px;
+        margin: 0 auto; 
+    }
+    .warp div{
+        margin-top: 8px;
+        font-size: 16px;
+    }
+    </style>
+</head>
+<body>
+</style>
+</head>
+<body>
+
+    <h1>도시별 날씨</h1>
+
+    <div class="container">
+
+    <div class="warp">
+            <h2>서울</h2>
+            <img id="con" alt="날씨아이콘" />
+            <div id="dis"></div>
+            <div id="wi"></div>
+        </div>
+
+        <div class="warp">
+            <h2>부산</h2>
+            <img id="con" alt="날씨아이콘" />
+            <div id="dis"></div>
+            <div id="wi"></div>
+        </div>
+         
+        <div class="warp">
+            <h2>인천</h2>
+            <img id="con" alt="날씨아이콘" />
+            <div id="dis"></div>
+            <div id="wi"></div>
+        </div>
+
+        <div class="warp">
+            <h2>대구</h2>
+            <img id="con" alt="날씨아이콘" />
+            <div id="dis"></div>
+            <div id="wi"></div>
+        </div>
+
+     </div>
+            
+    <script>
+    let dis = document.querySelectorAll("#dis")
+    let con = document.querySelectorAll("#con")
+    let wi = document.querySelectorAll("#wi")
+    const API_KEY = '89d6c114ec7bbbfd4be0ebc38e323833'
+    const cityname = ['Seoul','Busan','Incheon','Daegu']
+
+    async function getWeather(cityname,num){
+        let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=${API_KEY}&units=metric&lang=kr`)
+        let data = await res.json() 
+        dis[num].innerHTML = "오늘의 날씨 : " + data.main.temp + "Cº";
+
+        let icon = data.weather[0].icon;
+        let iconUrl=`http://openweathermap.org/img/wn/${icon}@2x.png`
+        con[num].setAttribute('src',iconUrl)
+    }
+    getWeather('Seoul', 0)  
+    getWeather('Busan', 1)  
+    getWeather('Incheon', 2)
+    getWeather('Daegu', 3) 
+</script>
+</body>
+</html>

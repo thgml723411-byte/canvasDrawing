@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심플 계산기</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f9; margin: 0; }
+        .calc-container { width: 320px; background: #fff; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        #dis { 
+            width: 100%; height: 60px; background-color: #f0f0f0; border-radius: 10px; 
+            margin-bottom: 20px; text-align: right; line-height: 60px; padding: 0 15px;
+            box-sizing: border-box; font-size: 1.5rem; font-weight: bold; overflow: hidden;
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        
+        .box { 
+            height: 60px; border-radius: 15px; display: flex; justify-content: center; 
+            align-items: center; cursor: pointer; font-weight: bold; font-size: 1.2rem;
+            transition: transform 0.1s, background 0.2s; user-select: none;
+            background-color: #34495e; color: white;
+        }
+        .box:active { transform: scale(0.95); }
+        .box:hover { opacity: 0.9; }
+
+        /* 색상 구분 */
+        .num { background-color: #2c3e50; }
+        .op { background-color: #e67e22; }
+        .util { background-color: #bdc3c7; color: #333; }
+        .equal { background-color: #27ae60; grid-column: span 2; }
+    </style>
+</head>
+<body>
+
+<div class="calc-container">
+    <div id="dis">0</div>
+    <div class="grid">
+        <!-- 첫째 줄 -->
+        <div class="box util" data-num="clear">AC</div>
+        <div class="box util" data-num="back">←</div>
+        <div class="box op" data-num="/">÷</div>
+        <div class="box op" data-num="*">×</div>
+        
+        <!-- 숫자 및 연산 -->
+        <div class="box num" data-num="7">7</div>
+        <div class="box num" data-num="8">8</div>
+        <div class="box num" data-num="9">9</div>
+        <div class="box op" data-num="-">-</div>
+        
+        <div class="box num" data-num="4">4</div>
+        <div class="box num" data-num="5">5</div>
+        <div class="box num" data-num="6">6</div>
+        <div class="box op" data-num="+">+</div>
+        
+        <div class="box num" data-num="1">1</div>
+        <div class="box num" data-num="2">2</div>
+        <div class="box num" data-num="3">3</div>
+        <div class="box num" data-num="0">0</div>
+        
+        <!-- 결과 버튼 -->
+        <div class="box equal" data-num="=">=</div>
+        <div class="box num" data-num=".">.</div>
+    </div>
+</div>
+
+<div class="backemo"></div>
+
+<script>
+    const dis = document.querySelector("#dis");
+    const boxes = document.querySelectorAll(".box");
+    let expr = '';
+
+    boxes.forEach(item => {
+        item.addEventListener("click", () => {
+            const v = item.dataset.num;
+
+            if (v === "clear") {
+                expr = '';
+                dis.innerText = '0';
+                return;
+            }
+
+            if (v === "back") {
+                expr = expr.toString().slice(0, -1);
+                dis.innerText = expr === '' ? '0' : expr;
+                return;
+            }
+
+            if (v === "=") {
+                try {
+                    // 수식 끝이 연산자면 제거 후 계산
+                    if (['+', '-', '*', '/'].includes(expr.slice(-1))) {
+                        expr = expr.slice(0, -1);
+                    }
+                    
+                    let result = new Function('return ' + expr)(); 
+                    dis.innerText = Number.isInteger(result) ? result.toLocaleString() : result.toFixed(2);
+                    expr = result.toString();
+                } catch (e) {
+                    dis.innerText = "Error";
+                    expr = '';
+                }
+                return;
+            }
+
+            // 연산자 연속 입력 방지
+            if (['+', '-', '*', '/'].includes(v) && ['+', '-', '*', '/'].includes(expr.slice(-1))) {
+                return;
+            }
+
+            expr += v;
+            dis.innerText = expr;
+        });
+    });
+</script>
+
+</body>
+</html>

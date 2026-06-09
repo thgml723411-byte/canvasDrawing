@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/certified.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Cherry+Bomb+One&family=Gugi&family=Jua&family=Major+Mono+Display&family=Noto+Sans+KR:wght@100..900&family=Orbit&display=swap" rel="stylesheet">
+</head>
+<body>
+     <header>
+    <nav class="nav">
+    <a href="./index.html"><div class="logo" href="./index.html"></div></a>
+    <!-- 여기부터  -->
+    <ul class="gnb">
+        <!-- 브랜드의 구역 -->
+        <li>
+            <a href="./subBrand.html"">브랜드</a>
+                <ul class="snb">
+                    <li><a href="./subBrand.html" onclick="showPage(1)">브랜드스토리</a></li>
+                    <li><a href="./certified.html" onclick="showPage(2)">연혁 및 인증</a></li>
+                    <li><a href="#" onclick="showPage(3)">CI$BI</a></li>
+                    <li><a href="#" onclick="showPage(4)">오시는 길</a></li>
+                </ul>
+        </li>
+        <!-- 스토리의 구역 -->
+         <li>
+            <a href="./story.html" onclick="showPage(5)">스토리</a>
+                <ul class="snb">
+                    <li><a href="#" onclick="showPage(6)">미디어</a></li>
+                    <li><a href="#" onclick="showPage(7)">홍보</a></li>
+                    <li><a href="#" onclick="showPage(8)">협찬</a></li>
+                    <li><a href="#" onclick="showPage(9)">이벤트</a></li>
+                </ul>
+        </li>
+        <!-- 갤러리 구역 -->
+         <li>
+            <a href="./gallery.html" onclick="showPage(10)">갤러리</a>
+                <ul class="snb">
+                    <li><a href="#" onclick="showPage(11)">컬렉션</a></li>
+                    <li><a href="#" onclick="showPage(12)">인테리어</a></li>
+                    <li><a href="#" onclick="showPage(13)">익스테리어</a></li>
+                </ul>
+        </li>
+        <!-- 쇼룸의 페이지 -->
+         <li>
+            <a href="./showroom.html" onclick="showPage(14)">쇼룸</a>
+                <ul class="snb">
+                    <li><a href="#" onclick="showPage(15)">전시장</a></li>
+                </ul>
+        </li>
+    </ul>
+    <!-- 햄버거바의 자리 -->
+    <div class="HAMBURGER">
+        <div class="cicircle">
+            <div class="one">
+                <span></span>
+                <span></span>
+            </div>
+       
+        <div class="two">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    </nav>
+    </header>
+<!-- 햄버거바의 풀메뉴 -->
+ 
+<div class="fullMenu">
+        <div class="closeBtn">X</div>
+    <ul class="fullGnb">
+            <li>
+                <a href="./subBrand.html" onclick="showPage(0)">브랜드</a>
+                <ul class="fullSnb">
+                    <li><a href="./subBrand.html" onclick="showPage(1)">브랜드스토리</a></li>
+                    <li><a href="./certified.html" onclick="showPage(2)">연혁 및 인증</a></li>
+                    <li><a href="#" onclick="showPage(3)">CI$BI</a></li>
+                    <li><a href="#" onclick="showPage(4)">오시는 길</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="./story.html" onclick="showPage(5)">스토리</a>
+                <ul class="fullSnb">
+                    <li><a href="#" onclick="showPage(6)">미디어</a></li>
+                    <li><a href="#" onclick="showPage(7)">홍보</a></li>
+                    <li><a href="#" onclick="showPage(8)">협찬</a></li>
+                    <li><a href="#" onclick="showPage(9)">이벤트</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="./gallery.html" onclick="showPage(10)">갤러리</a>
+                <ul class="fullSnb">
+                    <li><a href="#" onclick="showPage(11)">컬렉션</a></li>
+                    <li><a href="#" onclick="showPage(12)">인테리어</a></li>
+                    <li><a href="#" onclick="showPage(13)">익스테리어</a></li>
+                </ul>
+            </li>
+
+             <li>
+                <a href="./showroom.html" onclick="showPage(14)">쇼룸</a>
+                <ul class="fullSnb">
+                    <li><a href="./showroom.html" onclick="showPage(15)">전시장</a></li>
+                </ul>
+            </li>
+            
+
+    <div class="wrap">
+        <section id="brand1"></section>
+        <section id="brand2"></section>
+        <section id="brand3"></section>
+        <section id="brand4"></section>
+        <section id="brand5"></section>
+        <section id="story1"></section>
+        <section id="story2"></section>
+        <section id="story3"></section>
+        <section id="story4"></section>
+        <section id="story5"></section>
+        <section id="gallery1"></section>
+        <section id="gallery2"></section>
+        <section id="gallery3"></section>
+        <section id="gallery4"></section>
+        <section id="show1"></section>
+        <section id="show2"></section>
+        <section id="show3"></section>
+    </div>
+</div>
+</div>
+
+<!-- 화면1의 구역 -->
+<div class="wide1">
+    <div class="image1">
+        <div class="text1">HISTORY & CERTIFICATION</div>
+    </div>
+</div>
+
+<!-- 화면2의 구역/ 좀 길다 -->
+ <div class="wide2">
+    <div class="inBox">
+        <div class="crBox">
+            <div class="greyBox">연혁</div>
+            <span class="greyBar"></span>
+            </div>
+        <div class="imgBoxTree">
+            <div>연혁</div>
+            <div class="tree"></div>
+        </div>
+        <!-- 여기부터 사진나열 -->
+        <div class="imgBoxTree">
+            
+        </div>
+        
+        
+        </div>
+       
+    </div>
+</div>
+
+
+<!-- 스크립트 시작 -->
+    <script src="./js/certified.js">
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반응형</title>
+  <link rel="stylesheet" href="./reset.css">
+  <style>
+    .nav{
+
+    }
+  .wrap{
+    width: min(1200px, 95%);
+    margin: 10px auto;
+    display: grid;
+    gap: 15px;
+  }
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .card{
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+    border: 1px solid #eaeaea;
+  }
+  .card h3{
+
+  }
+  .card p{
+
+  }
+  .btns{
+    width: 100%;
+    height: 40px;
+    height: ;
+    background-color: #333;
+    color: white;           
+    padding: 8px 16px;      
+    border: none;           
+    border-radius: 4px;     
+    cursor: pointer;        
+  }
+
+    /* 테블릿 */
+    @media(max-width:1200px){
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .btns{
+         background-color: darkolivegreen;
+      }
+    }
+
+    /* 모바일 */
+    @media(max-width:600px){
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .btns{
+         background-color: darkblue;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="grid" id="grid"></div>
+  </div>
+  <script>
+  let grid = document.querySelector("#grid")
+  async function loaditems(){
+  try{
+    const res = await fetch("data4.json");
+    const data = await res.json();
+    let html = '';
+    data.forEach(function(item){
+     html += `<div class="card">
+          <h3>${item.title}</h3>
+          <p>${item.desc}</p>
+          <div class="btns">
+          <button>${item.btn}</button>
+        </div>
+      </div>`
+    })
+    grid.innerHTML = html
+   }catch(err){
+      console.error("파싱에러발생",err)
+   }
+ }
+loaditems()
+</script>
+</body>
+</html>

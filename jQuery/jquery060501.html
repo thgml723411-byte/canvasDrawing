@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>jquery햄버거바</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../reset.css">
+  <style>
+     header{
+        width: 100%;
+        height: 70px;
+        background-color: #222;
+        color: white;
+
+        /*자식3마리를logo,hamBtn,nav정신차리게 */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        /*  */
+        padding: 0 40px;
+        position: relative;
+     }
+    .logo{
+        font-style: 25px;
+        font-weight: bold;
+    }
+    .hamBtn{
+        width: 40px;
+        height: 30px;
+        cursor: pointer;
+
+        /*  */
+        display: none;
+        
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .hamBtn span{
+        width: 100%;
+        height: 4px;
+        background-color: white;
+        transition: all 0.3s;
+    }
+    .nav{
+        /* 자식a태그 */
+        display: flex;
+        gap: 50px;
+    }
+    .nav a{
+        color: white;
+        font-size: 15px;
+    }
+    @media (max-width: 768px){
+        .hamBtn{
+            display: flex;
+        }
+        .nav{
+            position: absolute;
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            gap: 0;
+            left: 0 ;
+            top: 70px ;
+            background-color: #222;
+        }
+        .nav.on{
+           /* 햄버거바를클릭했을때navon가 */
+           display: flex;
+           /* left: 0 ;
+           top: 70px ; */
+           flex-direction: column;
+        }
+        .nav a{
+            padding: 20px;
+            display: block;
+            border-bottom: 1px solid #999;
+        }
+        /* .hamBtn.on{
+            display: block;
+        } */
+        .hamBtn.on span:nth-child(1){
+           transform: translate(-10px,12px) rotate(45deg);
+        }
+        .hamBtn.on span:nth-child(2){
+           opacity: 0;
+        }
+        .hamBtn.on span:nth-child(3){
+           transform: translate(-10px,-12px) rotate(-45deg);
+        }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">logo</div>
+        <button class="hamBtn">
+           <span></span>
+           <span></span>
+           <span></span>
+        </button>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Gallery</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+
+<script>
+    $(function(){
+        //햄버거버튼을클릭하면보였다안보였다
+        $('.hamBtn').on('click', function(){
+            $('.nav').toggleClass("on")
+            $('.hamBtn').toggleClass("on")
+        })
+    })
+</script>
+</body>
+</html>

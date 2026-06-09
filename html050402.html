@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달창만들기1</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+
+    .smallBox{
+       width: 50%;
+       height: 200px;
+     }
+     .simg{
+        width: 80%;
+        height: 100%;
+        object-fit: cover;
+     }
+    .modalbox{
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0; top: 0;
+    }
+    .modalbox.on{
+        display: flex;
+    }
+    .bigImgBox{
+        position: relative;
+        width: 50%;
+        height: 200px;
+        background-color: white;
+    }
+    #btn{
+        position: absolute;
+        right: 10px; top: 10px;
+    }
+    .bigImgBox img{
+        width: 80%;
+        height: 80%;
+    }
+
+    </style>
+</head>
+<body>
+
+<div class="smallBox">
+ <img class="simg"  src ="./img/banana.jpg" alt="바나나" />
+</div>
+
+<div class='modalbox on'>
+  <div class="bigImgBox">
+  <button id="btn">&times;</button>
+  <img src="./img/banana.jpg"alt=바나나 />
+  </div>
+</div>
+
+
+
+<script>
+    let opens = document.querySelector('')
+    let modal_box = document.querySelector('')
+    let closes = document.querySelector('')
+    
+    opens.addEventListener('click',function(){
+        modal_box.classList.add()
+    })
+    closes.addEventListener('click',function(){
+        modal_box.classList.remove()
+    })
+</script>
+
+</body>
+</html>

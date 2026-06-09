@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery tab meru</title>
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+   <style>
+    .wrap{
+        width: 800px;
+        /* height: ; */
+
+    }
+    .menu{
+        display: flex;
+
+    }
+    .menu button{
+        flex: 1;/* 부모(menu)가플렉스를써줘야지만이걸쓸수있음 */
+        height: 50px;
+        border: none;
+        background-color: #ccc;
+        cursor: pointer;
+        font-size: 20px;
+        padding: 5px 10px;
+
+    }
+    .menu button.on{
+       background-color: #222;
+       color: white;
+    }
+    .content{
+        display: none;/* 형제3마리일단은안보이게 */
+        padding: 20px;
+        border: 1px solid #ddd;
+        font-size: 25px;
+    }
+    .content.on{
+        display: block;
+    }
+   </style>
+</head>
+<body>
+   <div class="wrap">
+    <div class="menu">
+         <button class="on">공지사항</button>
+         <button>갤러리</button>
+         <button>Q&A</button>
+    </div>
+   </div>
+
+   <div class="content on">
+     공지사항 내용입니다
+   </div>
+    <div class="content">
+       갤러리 내용입니다
+   </div>
+   <div class="content">
+       Q&A 내용입니다
+   </div>
+
+    <script>
+        //$('.menu button').click(function(){})이렇게해도틀린건아니지만
+        $('.menu button').on('click',function(){
+            let idx = $(this).index()//this는몇개만지칭하고몇번째인가를알려주는index명령어사용
+            $('.menu button').removeClass('on')//기존에있던걸지워져
+             $(this).addClass('on')
+
+             $('.content').removeClass('on')//전부다지우고
+             $('.content').eq(idx).addClass('on')//내가클릭한거에붙여//idx몇번째로eq가라
+        })
+    </script>
+</body>
+</html>

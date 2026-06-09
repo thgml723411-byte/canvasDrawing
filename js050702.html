@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 5번 이름과나이를입력받아서 20살이면***님성년입니다 아니면***님미성년입니다 -->
+     <div class="outBox">
+        <input type="text" id="name" placeholder="이름을 입력하세요" />
+        <input type="number" id="age" placeholder="나이를 입력하세요" />
+        <button onclick="checkIn()">확인</button>
+        <div id="checkBox">성년/미성년 확인</div>
+    </div>
+<script>
+    //5번 이름과나이를입력받아서 20살이면***님성년입니다 아니면***님미성년입니다
+    function ch(na,ag){
+        let result = ''
+        if( ag >= 20){
+            result = `${na}님 성년이시군요`
+        }else{
+            result = `${na}님 미성년이시군요`
+        }
+        return result
+    }
+    function checkIn(){
+        let name = document.querySelector('#name').value
+        let age =  Number(document.querySelector('#age')).value
+        ch(name,age)
+        document.querySelector('#checBox').innerHTML = result
+    }
+</script>
+</body>
+</html>

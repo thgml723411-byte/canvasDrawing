@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아코디언메뉴</title>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="../reset.css">
+
+      <style>
+        .wrap{
+            width: min (900px,90%);
+            margin: 30px auto;
+            
+        }
+        .wrap h2{
+            font-size: clamp(1.2rem,4vw,3rem);
+            margin-bottom: 30px;
+
+        }
+        .qna{
+            padding: 20px;
+            border: 1px solid #aaa;
+            font-size: 1.5rem;
+            overflow: hidden;
+        }
+        .question{
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            padding: 10px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+        .icon{
+            transition: all 0.3s;
+        }
+        .question.on .icon{
+            transform: rotate(180deg);
+        }
+        .answer{
+            display: none;
+            font-size: 1.2rem;
+            padding: 10px;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+        .answer.on{
+            display: block;
+        }
+      </style>
+</head>
+<body>
+    <header>
+
+
+    </header>
+    
+    <div class="wrap">
+       <h2>자주 묻는 질문</h2>
+       <div class="qna">
+           <div class="question">
+              회원가입은 어떻게 하나요?
+              <span class="icon">▽</span>
+           </div>
+           <div class="answer">
+               상단 오른쪽 회원가입 버튼을 클릭해서 진행할 수 있습니다
+           </div>    
+       </div>
+
+       <div class="qna">
+           <div class="question">
+              환불은 어떻게 하나요?
+              <span class="icon">▽</span>
+           </div>
+           <div class="answer">
+               결제 후 7일이내
+           </div>    
+       </div>
+
+       <div class="qna">
+           <div class="question">
+              비밀번호를 잊어버렸어요
+              <span class="icon">▽</span>
+           </div>
+           <div class="answer">
+               로그인 페이지 하단에 비밀번호 찾기를 클릭해주세요
+           </div>    
+       </div>
+    </div>
+    <script>
+        // $(function(){
+        //    $('.question').on('click',function(){
+        //        $(this).toggleClass('on')
+        //    })
+        // })
+        $(function(){
+           $('.question').on('click',function(){
+               $(this).toggleClass('on')
+               $(this).next().stop().slideToggle()
+           })
+        })
+    </script>
+</body>
+</html>

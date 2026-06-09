@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+
+    .container{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-image: url(./img/back.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover
+        position: relative;
+    }
+    
+
+    .calculator {
+       border: 1px solid rgb(178, 156, 192);
+       width: 300px;
+       height: 480px;
+       padding: 5px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+       background-color: rgb(200, 106, 255);
+       box-shadow: 3px 3px 3px 3px rgb(201, 137, 243);
+       border-radius: 15px;
+       z-index: 1;
+    }
+
+    .purple{
+    background-image: url(./img/pngwing.com.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 150px;       
+    height: 150px;
+    position: absolute;
+    top: 3%; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 0;
+    }
+
+    #dis{
+        width: 280px;
+        height: 90px;
+        background-color: rgb(189, 135, 206);
+        border-radius: 10px;
+        text-align: right;         
+        line-height: 100px;        
+        padding-right: 20px;       
+        font-size: 2rem;           
+        color: white;
+        margin: 15px auto;
+    }
+    .outBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap : 10px;
+        width: 100%;
+        height: 500px;
+        flex-wrap: wrap;
+        }
+        .outBox .box{
+            width: 55px;
+            height: 55px;
+            background-color: darkblue;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 55px;
+            transition: 0.2s;
+        }
+        .outBox .box:hover{
+            background-color: white;    
+            color: darkblue;            
+            transform: scale(1.1);    
+        }
+          .outBox .box1{
+            background-color: rgb(54, 167, 241);
+           }
+          .outBox .box2{
+            background-color: rgb(54, 167, 241);
+           }
+          .outBox .box3{
+            background-color: rgb(54, 167, 241);
+            width: 115px ;
+          }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+      <div class="purple"></div>
+        <div class="calculator">
+                <div id="dis">0</div>
+                <div class="outBox">
+                    <div class="box" data-num="clear">AC</div>
+                    <div class="box" data-num="back">←</div>
+                    <div class="box" data-num="%">%</div>
+                    <div class="box" data-num="/">/</div>
+
+                    <div class="box" data-num="7">7</div>
+                    <div class="box" data-num="8">8</div>
+                    <div class="box" data-num="9">9</div>
+                    <div class="box" data-num="*">*</div>
+
+                    <div class="box" data-num="4">4</div>
+                    <div class="box" data-num="5">5</div>
+                    <div class="box" data-num="6">6</div>
+                    <div class="box" data-num="+">+</div>
+
+                    <div class="box" data-num="1">1</div>
+                    <div class="box" data-num="2">2</div>
+                    <div class="box" data-num="3">3</div>
+                    <div class="box" data-num="-">-</div>
+
+                    <div class="box box1" data-num="0">0</div>
+                    <div class="box box2" data-num=".">.</div>
+                    <div class="box box3" data-num="=">=</div>
+                </div>
+            </div>
+    </div>
+    
+    <script>
+       const boxs = document.querySelectorAll(".box")
+       const dis = document.querySelector("#dis")
+
+       let expr = ''
+
+       boxs.forEach((item)=>{
+            item.addEventListener("click", ()=>{
+                let v = item.dataset.num
+
+                if(v === "clear"){
+                    expr = ''
+                    dis.innerHTML = '0'
+                    return
+                }
+                
+                if( v === "back"){
+                    expr = expr.slice(0,-1)
+                    dis.innerHTML = expr === '' ? 0 : expr 
+                    return
+                }
+
+                if( v === "="){
+                    if( expr === '' || expr.endsWith("+") || expr.endsWith("-") || expr.endsWith("/") || expr.endsWith("*") || expr.endsWith("%") ){
+                        dis.innerHTML = 'error'
+                        expr=''
+                        return
+                    }
+                    let ans = eval( expr )
+                    dis.innerHTML = Number(ans).toLocaleString()
+                    expr = String(expr)
+                    return
+                }
+                expr += v
+                dis.innerHTML=expr
+                // let parts = expr.split("+")
+                // let parts = expr.split("-")
+                // if(parts.length === 1){
+                //     dis.innerHTML = Number(parts[0]).toLocaleString()
+                // }else{
+                //    dis.innerHTML = Number(parts[0]).toLocaleString() + "+" +Number( parts[1]).toLocaleString()
+                // }
+                // return
+            })
+       })
+         
+    </script>
+</body>
+</html>

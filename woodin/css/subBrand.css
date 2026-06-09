@@ -1,0 +1,481 @@
+html{
+  scroll-behavior: smooth;
+  
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+body{
+   background-color: rgb(236, 236, 236);
+   z-index: -100;
+   
+}
+ header{
+    width: 100%;
+    height: 100px;
+    color: rgb(78, 78, 78);
+ }
+ nav{
+    width: 100%;
+    height: 85px;
+    overflow: hidden;
+    position: fixed;
+    top: 0; left: 0;
+    display: flex;
+    justify-content: center;
+    /* align-items:center; */
+    background-color: rgba(236, 236, 236,0.8);
+    transition: all 0.3s;
+    z-index: 10;
+ }
+  nav.on{
+    height: 420px;
+ }
+ .logo{
+  margin-right: 100px;
+    width: 150px;
+    height: 85px;
+    background-image: url(/img/imgi_16_logo.png);
+    background-position: center;
+   background-repeat: no-repeat;
+   background-size: contain;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+    /* border: 1px solid red; */
+ }
+  .gnb{
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    height: 95px;
+    /* background-color: rgb(238, 108, 108); */
+    display: flex;
+    justify-content: center;
+ }
+ .nav>a{
+  /* margin-right: 100px; */
+    width: 15%;
+    height: 85px;
+     /* border: 1px solid red; */
+ }
+ .gnb > li{
+    width: calc(100%/4);
+    height: 100%;
+ }
+  .gnb > li > a{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 400;
+    /* background-color: red; */
+ }
+ .gnb > li > a:hover{
+    font-weight: 500;
+ }
+ .snb{
+       margin-top: 20px;
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 30px;
+        /* background-color: rgb(214, 214, 214); */
+        }
+.snb > li{
+      font-size: 18px;
+        }
+
+.snb > li:hover{
+        color: rgb(67, 107, 77);
+     }
+section{
+    width: 100%;
+    height: calc(100vh - 95px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+    font-weight: bold;
+        }
+section.on{
+    display: flex;
+      }
+ .HAMBURGER{
+    width: 5%;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* background-color: rgba(83, 186, 255, 0.822); */
+ }
+ .cicircle{
+  width: 30px;
+  height: 30px;
+  gap: 7px;
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+  flex-wrap: wrap;
+  /* background-color: rgb(255, 0, 0); */
+ }
+ .one{
+  gap: 15px;
+  position: absolute;
+  display: flex;
+ }
+ .two{
+  margin-top: 23px;
+  gap: 15px;
+  position: absolute;
+  display: flex;
+ }
+ .HAMBURGER span{
+    width: 8px;
+    height:8px;
+    border-radius: 50%;
+    background-color: rgb(65, 65, 65);
+    transition: all 0.3s;
+ }
+ /* 여기부터 풀메뉴 */
+ .fullMenu{
+    width: 100%;
+    height: 0;
+    background-color: rgba(15, 15, 15, 0.8);
+    color: rgb(235, 235, 235);
+    position: fixed;
+    left: 0;
+    top: -100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 0.3s;
+     
+ }
+.fullMenu.on{
+    top: 0;
+    height: 100vh;
+    display: flex;
+}
+.fullGnb{
+    width: 65%;
+    height: 70%;
+    margin-top: 60px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    /* border: 1px solid red; */
+}
+.fullGnb>li{
+    width: calc(100%/4);
+    height: 100%;
+    font-size: 2px;
+     /* border: 1px solid red; */
+    
+}
+.fullGnb>li>a{
+    width: 100%;
+    height: 20%;
+    font-size: 40px;
+    font-weight: 300;
+    cursor: pointer;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+     /* background-color: rgb(255, 38, 0); */
+}
+.fullSnb{
+    width: 100%;
+    height: 80%;
+    font-size:25px ;
+    font-weight: 200;
+    cursor: pointer;
+     display:flex ;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(235, 235, 235);
+    gap: 10px;
+}
+.fullSnb>li>a:hover{
+  color: rgb(80, 146, 96);
+}
+.closeBtn{
+    position: absolute;
+    right: 170px;
+    top: 45px;
+    width: 30px;
+    height: 30px;
+    font-size: 45px;
+    /* border: 1px solid red; */
+    cursor: pointer;
+}
+/* 여기부터 화면 시작 */
+.wide1{
+    margin-top: -85px;
+    width: 100%;
+   height: 100vh;
+   /* background-color: aqua; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.imgBox{
+    width: 100%;
+   height: 100vh;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.MM{
+    background-image: url(/img/brand-main.jpg);
+    width: 95%;
+    height: 80%;
+    border-radius: 10px;
+        display: flex;
+   justify-content: center;
+   align-items: center;
+}
+span{
+    color: aliceblue;
+    font-size: 65px;
+    font-weight: 400;
+}
+.wide2{
+    width: 100%;
+   height: 100vh;
+   /* background-color: aqua; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+}
+.whiteBox{
+    width: 50%;
+    height: 90%;
+    background-color: rgb(255, 254, 254);
+    border-radius: 10px;
+     display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+.wood{
+    text-align: center;
+    font-size: 55px;
+       font-weight: 100;
+   font-family: "Nanum Gothic", sans-serif;
+}
+.bar1{
+    margin-top: 18px;
+    width: 70px;
+    height: 1px;
+    background-color: black;
+}
+.gangwonsun{
+    margin-top: 18px;
+   font-size: 20px;
+   font-weight: 400;
+   font-family: "Nanum Gothic", sans-serif;
+}
+.txtWood1,.txtWood2,.txtWood3{
+    text-align: center;
+    margin-top: 18px;
+   font-size: 20px;
+   font-weight: 100;
+   font-family: "Nanum Gothic", sans-serif;
+}
+.txtWood4{
+    text-align: center;
+    margin-top: 30px;
+   font-size: 20px;
+   font-weight: 100;
+   font-family: "Nanum Gothic", sans-serif;
+   display: flex;
+   gap: 20px;
+}
+.imgBox2{
+   overflow: hidden;
+    width: 40%;
+    height: 90%;
+    border-radius: 10px;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   /* border: 1px solid red; */
+}
+.img1{
+     width: 100%;
+    height: 100%;
+     background-image: url(/img/humanwoodin.png);
+    background-position: center;
+   background-repeat: no-repeat;
+   background-size: contain;
+   /* transform: scale(1.5); */
+}
+
+.wide3{
+    width: 100%;
+   height: 100vh;
+   /* background-color: aqua; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.imgBox3{
+    background-image: url(/img/brand-main2.jpg);
+     width: 95%;
+   height: 90%;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   flex-direction: column;
+}
+.imgBox3{
+    text-align: center;
+    margin-top: 30px;
+   /* font-size: 20px; */
+   font-weight: 100;
+   display: flex;
+   color: aliceblue;
+}
+.imgBox3 div:nth-child(1){
+    font-size: 70px;
+    font-family: "Nanum Gothic", sans-serif;
+}
+.imgBox3 div:nth-child(2){
+    font-size: 40px;
+    font-family: "Nanum Gothic", sans-serif;
+}
+.imgBox3 div:nth-child(3){
+    font-size: 18px;
+    font-family: "Nanum Gothic", sans-serif;
+}
+.wide4, .wide5{
+    width: 100%;
+   height: 130vh;
+   /* background-color: aqua; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 150px;
+}
+.picture1, .picture3{
+    text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   flex-direction: column;
+   margin-bottom: -200px;
+}
+.picture2,.picture4{
+    text-align: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   flex-direction: column;
+   margin-top: -200px;
+}
+.art1, .art3, .art5, .art7{
+    font-size: 70px;
+    font-weight: 100;
+    font-family: "Nanum Gothic", sans-serif;
+    /* background-color: black; */
+}
+.art2, .art4, .art6, .art8{
+    font-size: 20px;
+    font-weight: 300;
+    font-family: "Nanum Gothic", sans-serif;
+    /* background-color: black; */
+}
+.picture1 img{
+background-image: url(/img/brand1-1.jpg);
+border-radius: 10px;
+width: 620px;
+height: 700px;
+}
+.picture3 img{
+ background-image: url(/img/brand1-3.jpg);
+border-radius: 10px;
+width: 620px;
+height: 700px;
+}
+.picture2 img{
+background-image: url(/img/brand1-2.jpg);
+border-radius: 10px;
+width: 620px;
+height: 700px;
+}
+.picture4 img{
+background-image: url(/img/brand1-4.jpg);
+border-radius: 10px;
+width: 620px;
+height: 700px;
+}
+
+
+
+
+
+
+
+
+
+
+/* 푸터의 시작아아아ㅏㅇㄱ이으아아악 */
+footer{
+  width: 100%;
+  height: 200px;
+  background-color: black;
+  padding: 50px;
+  display: flex;
+    justify-content: start;
+  align-items: start;
+}
+.LastBox{
+  gap: 20px;
+  width: 50%;
+  height: 80%;
+  display: flex;
+  justify-content: start;
+  /* background-color: aqua; */
+}
+.ma{
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 10%;
+  height: 80%;
+  /* border: 1px solid red; */
+  background-image: url(/img/imgi_16_logo_p.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 70%;
+  margin-right: 20px;
+}
+.lastOne{
+
+  width: 1px;
+  height: 100px;
+  background-color: rgb(199, 199, 199);
+}
+.lastOne2{
+  color: rgb(175, 175, 175);
+  font-weight: 200;
+  font-family: "Nanum Gothic", sans-serif;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>페이지카피사이트</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+    header{
+        width: 100%;
+        height: 90px;
+    }
+    nav{
+        width: 100%;
+        height: 90px;
+        background-color: rgb(16, 54, 36);
+        color: white;
+        display: flex;
+        justify-content: center; /* 애는center가로가운데 */
+        align-items: center; /* 애는center세로가운데 */
+        overflow: hidden;
+    }
+    nav.on{
+        height: 490px;
+    }
+    .logBox{
+      width: 20%;
+      height: 100px;
+      /* background-color: aqua; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .gnb{
+        width: 70%;
+        height: 100%;
+        /* background-color: skyblue; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
+    }
+    .gnb > li{
+        width: calc(95%/3);
+        height: 90px;
+        /* background-color: gold; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .gnb > li >a{
+        width: 100%;
+        height: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        font-weight: 700px;
+    }
+    .snb{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="logBox"><a href="#" onclick="onpage()">logo</a></div>
+            <!-- 로고는글자보다는이미지태그를사용함<img> -->
+            <ul class="gnb">
+                <li>
+                    <a href="#" onclick="onpage()">회사소개</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="onpage()">회사연혁</a></li>
+                        <li><a href="#" onclick="onpage()">회사기술</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" onclick="onpage()"></a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="onpage()"></a></li>
+                        <li><a href="#" onclick="onpage()"></a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#" onclick="onpage()">상품소개</a>
+                    <ul class="snb">
+                        <li><a href="#" onclick="onpage()">감자</a></li>
+                        <li><a href="#" onclick="onpage()">옥수수</a></li>
+                    </ul>
+                </li>
+                
+                
+            </ul>
+        </nav>
+    </header>
+    <script>
+        let gnb = document.querySelector('.gnb')
+        let nav = document.querySelector('.nav')
+        
+        gnb.addEventListener('mouseenter',function(){
+            nav.classList.add('on')
+        })
+
+        gnb.addEventListener('mouseleave',function(){
+            nav.classList.remove('on')
+        })
+    </script>
+</body>
+</html>

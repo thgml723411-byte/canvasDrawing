@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+
+<body>
+
+    <label for="name"> 이름 : </label> <input id="name" type="text" placeholder ='이름을 입력하세요'/>
+    <label for="age"> 나이 : </label> <input id="age" type="number" placeholder ='나이를 입력하세요'/>
+    <button id="btn">  check </button>
+    <div class="ans" id="ans">여기에 성년/미성년 표시가 나타납니다 </div>
+
+    <script>
+
+    let name = document.getElementById('name')
+    let age = document.getElementById('age')
+    let btn = document.getElementById('btn')
+    let ans = document.getElementById('ans')
+    
+    btn.onclick = function(){
+        if(Number(age.value) >= 20){
+            ans.innerHTML = name.value + '님' + Number(age.value) + '살 성년이시군요'
+        }else{
+            ans.innerHTML = name.value + '님' + Number(age.value) + '살 미성년이시군요'
+        }
+            
+        }
+
+    </script>
+
+</body>
+</html>

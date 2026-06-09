@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탭메뉴,스크롤이벤트를활용해카피사이트만들기</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+
+    header{
+        width: 100%;
+        background-color: #fff;
+    }
+
+    nav{
+        width: 100%;
+        height: 70px;
+
+        position: fixed;
+        left: 0; top: 0;
+        z-index: 1000;
+
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        padding: 0 50px; 
+
+        transition: all 0.4s;
+        background-color: #fff; 
+        border-bottom: 1px solid #e5e5e5;
+    }
+    nav.on{
+        height: 60px;
+        backdrop-filter: blur(20px);
+        background-color: rgba(255, 255, 255, 0.8); 
+    }
+
+    .nav-menu {
+       display: flex;
+       gap: 35px; 
+    }
+    .nav-menu a {
+      font-size: 16px;
+      font-weight: 500;
+      color: black;
+    }
+
+    .logo{ 
+       display: flex;
+       align-items: center; 
+       gap: 15px;
+       
+       position: absolute; 
+       left: 50px;         
+    }
+    .logo img { 
+        height: 24px; 
+        display: block; 
+    }
+    .logo span { 
+        font-size: 13px;
+        color: #aaa;
+        font-weight: 500;
+    }
+
+    .txt-box { 
+        text-align: center; 
+        padding: 160px 0 50px; 
+    }
+    .txt-box h2 { 
+        font-size: 38px; 
+        font-weight: bold; 
+        margin-bottom: 20px; 
+        letter-spacing: -1px; 
+    }
+    .txt-box p { 
+        font-size: 14px; 
+        color: #555; 
+        line-height: 1.6; 
+    }
+
+     
+    .tab-menu { 
+        display: flex; 
+        gap: 25px; 
+       
+        padding: 0 50px; 
+        margin-bottom: 0px; 
+    }
+    
+    .tab-menu button {
+        border: none;
+        background: none; 
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 10px 0 20px 0; 
+        color: #bbb; 
+        transition: color 0.3s;
+    }
+    
+    .tab-menu button.on { 
+       color: #000; 
+       font-weight: bold; 
+    }
+
+    
+    .tab-body { 
+        width: 100%; 
+    
+        padding: 0px 50px 40px 50px; 
+    }
+    .content { display: none; }
+    .content.on { display: block; }
+
+    section {
+        width: 100%;
+        height: 100vh; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        font-size: 50px; 
+    }
+    /* .sec1 {  }
+    .sec2 {  }
+    .sec3 {  } */
+    </style>
+</head>
+<body>
+<header>
+  <!-- 상단 -->
+  <nav>
+     <!-- 로고 -->
+    <div class="logo">
+      <img src="../img/imgi_2_search_header_logo.png" alt="fmk"/>
+      <span class="slogan">Freeze The Power</span>
+    </div>
+
+     <ul class="nav-menu">
+    <li><a href="#">About</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#">Event</a></li>
+    <li><a href="#">Community</a></li>
+  </ul>
+
+  </nav>
+
+  <!-- 2. 중앙 타이틀과 설명 -->
+  <div class="txt-box ">
+    <h2>Product List</h2>
+    <p>Care that performs beyond routine.<br>Precise and result-driven. Professional, made personal.</p>
+  </div>
+
+  <!-- 3. 하단 탭 메뉴 버튼들 -->
+  <div class="tab-menu">
+     <button class="on">Rejuvenating</button>
+     <button>Brightening</button>
+     <button>Set</button>
+  </div>
+</header>
+
+<!-- 4. 탭 콘텐츠 영역 (헤더 외부) -->
+<div class="tab-body">
+   <!-- Rejuvenating 탭 내용 -->
+   <div class="content on">
+       <div class="product-wrap">
+           <!-- 💡 나중에 여기에 실제 상품 이미지와 글씨가 들어갈 자리입니다 -->
+           첫 번째 Rejuvenating 상품 구역입니다.
+       </div>
+   </div>
+   
+   <!-- Brightening 탭 내용 -->
+   <div class="content">
+       <div class="product-wrap">
+           두 번째 Brightening 상품 구역입니다.
+       </div>
+   </div>
+   
+   <!-- Set 탭 내용 -->
+   <div class="content">
+       <div class="product-wrap">
+           세 번째 Set 상품 구역입니다.
+       </div>
+   </div> 
+</div>
+
+<!-- 본문 섹션 영역 -->
+<section class="sec1">첫번째 화면입니다</section>
+<section class="sec2">두번째 화면입니다</section>
+<section class="sec3">세번째 화면입니다</section>
+
+<script>
+    // 1. 스크롤 이벤트
+    $(window).on('scroll', function(){
+        let scrTop = $(window).scrollTop();
+
+        if(scrTop > 80){
+            $('nav').addClass('on'); 
+        } else {
+            $('nav').removeClass('on');
+            $('.topBtn').fadeOut();
+        }
+    });
+
+    // 2. 
+    $('.topBtn').on('click', function(){
+        $('html, body').stop().animate({
+            scrollTop : 0
+        }, 500);
+    });
+
+    // 3.
+    $('.tab-menu button').on('click', function(){
+        let idx = $(this).index(); 
+        
+        $('.tab-menu button').removeClass('on');
+        $(this).addClass('on');
+        
+        $('.tab-body .content').removeClass('on');
+        $('.tab-body .content').eq(idx).addClass('on');
+    });
+</script>
+</body>
+</html>

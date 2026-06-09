@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="num" type="number" placeholder="숫자를 입력해주세요" />
+    <button id="btn">확인</button>
+    <div id="dis"> 여기에 홀수 또는 짝수가 표시 됩니다 </div>
+    <script> 
+    let num = document.getElementById('num')
+    let btn = document.getElementById('btn')
+    let dis = document.getElementById('dis')
+    btn.onclick = function(){
+        if(Number(num.value) % 2 == 0){
+            dis.innerHTML = "짝수다"
+        }else{
+            dis.innerHTML = "홀수다"
+        }
+    }
+    </script>
+</body>
+</html>

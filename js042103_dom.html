@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+<!-- 만약 내가 입력한 숫자까지의 총합이 15이면 홀수라서 출력안됨
+만약 내가 입력한 숫자까지의 총합이 1050이면 짝수라서 출력됨 -->
+ 
+<input id="num" type="number" placeholder="숫자를 입력하시오"/>
+<duttn id="btn"> 확인 </duttn>
+<div id="dis">짝수는출력됨 홀수는출력안됨</div>
+
+<script>
+   
+let num = document.getElementById('num')
+let btn = document.getElementById('btn')
+let dis = document.getElementById('dis')
+
+btn.onclick = function(){
+    let sum = 0;
+    let num1 = Number(num.value)
+for(let i=1; i<=num1; i++){
+   sum += i
+}
+if(sum % 2==0 ){
+dis.innerHTML = '총합계'+ sum
+}else{
+dis.innerHTML = '홀수라서 출력안해요'
+}
+}
+
+</script>
+</body>
+</html>

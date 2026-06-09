@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔버스</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <!--
+
+     -->
+    <canvas width="800" height="600"></canvas>
+    <script>
+       let canvas = document.querySelector('canvas')
+       let ctx = canvas.getContext('2d')
+
+     //원형
+     ctx.beginPath()
+     // 1. 함수를 createRadialGradient로 변경
+   // 2. 중심점을 원의 중심인 (100, 100)으로 일치시킴
+   // ctx.createRadialGradient(안쪽원X, 안쪽원Y, 안쪽반지름, 바깥원X, 바깥원Y, 바깥반지름)
+   let raG = ctx.createRadialGradient(50, 60, 10, 80, 90, 100)
+   
+   raG.addColorStop(0, 'white')
+   raG.addColorStop(0.4, 'skyblue')
+   raG.addColorStop(1, 'rgba(255, 255, 255, 0)')
+
+   // 그림자 설정
+   ctx.shadowBlur = 20
+   ctx.shadowOffsetX = 5
+   ctx.shadowOffsetY = 5
+   // [오류 해결] rgba(...) 값을 문자열 따옴표('')로 감싸주어야 합니다.
+   ctx.shadowColor = 'rgba(0,0,0,0.3)'
+
+
+   ctx.fillStyle = raG
+   // 실제 그려지는 원의 중심도 (100, 100)이며 반지름은 100입니다.
+   ctx.arc(100, 100, 100, 0, Math.PI * 2)
+   ctx.fill()
+    </script>
+</body>
+</html>

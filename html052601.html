@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형</title>
+    <link rel="stylesheet" href="./reset.css">
+    <style>
+    body, *{
+      font-size: 20px;
+    }
+    .outBox{
+        /* 단위 차이*/
+        width: 50vw; /* %,vw */
+        height: 50vh; /* %,vh *//* 워렙아웃박스는하이는자동으로맞겨주세요해서하이값은안주는게나음 */
+        background-color: blueviolet;
+        font-size: 3rem; /* px,em,rem *//* 통일시키기위해서/em은부모가바뀌면자식도자동바뀌는가져가는/rem은나의뿌리를따라서*3바뀌는가져가는 */
+    }
+    .inBox{
+        width: 80%;
+        height: 80%;
+        background-color: plum;
+        font-size: 3rem;
+    }
+    .inBox2{
+        font-size: 3rem;
+    }
+        
+    </style>
+</head>
+<body>
+ <div class="outBox">outBox
+     <div class="inBox">inBox
+        <div class="inBox2">inBox2</div>
+     </div>
+    </div>
+</body>
+</html>

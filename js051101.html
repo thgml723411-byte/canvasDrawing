@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     /* 반복되는것만css 반복되지않는것js */
+     .box{
+        width: 100px;
+        height: 100px;
+        color: #ccc;
+        background-color: blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     }
+     #boxwrap{
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+     }
+    </style>
+</head>
+<body>
+    <!-- 갯수만큼 박스 만들기,박스안에 item(과일이름)들어가기 -->
+    <div class="outBox">
+        <input id="count" type="number" placeholder="상자 갯수 입력" />
+        <button onclick="makeBox()"> 박스만들기 </button>
+    </div>
+    <div id="boxwrap"></div>
+    <script>
+    //갯수만큼 박스 만들기,박스안에 item(과일이름)들어가기
+    let boxwrap = document.querySelector('#boxwrap')
+    let item = ['사과','딸기','바나나','복숭아','파인애플']
+
+    function makeBox(){
+        let count = Number( document.querySelector('#count').value)
+        boxwrap.innerHTML = ""
+        for(let i=0; i<count; i++){
+        let div = document.createElement('div')//변수이름도통일이좋음
+        div.classList.add('box')
+        div.innerText=item[i % item.length]//i의%나머지length내가가지고있는배열까지/공식
+        boxwrap.appendChild(div)
+      }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!-- js function & 객체를 활용한 장바구니  -->
+
+    <h2>장바구니 담기</h2>
+
+    <div>
+      <label>상품명</label>
+      <input type="text" id="item" placeholder="상품명을 입력해주세요" />
+    </div>
+    <div>
+      <label>가격</label>
+      <input type="text" id="price" placeholder="가격을 입력해주세요" />
+    </div>
+    
+      <button id="btn">담기</button>
+
+       <ul id="wishList">
+
+       </ul>
+
+      <div>
+        <span>총합계 : </span>
+        <span id="total">0원</span>
+    </div>
+    <!--여기는고객유저에게총합계보여주는출력자리 <span>은가로로나오는것  -->
+
+      <script>
+         let item = document.querySelector('#item')
+         let price = document.querySelector('#price')
+         let btn = document.querySelector('#btn')
+         let wishList = document.querySelector('#wishList')
+         let total = document.querySelector('#total')
+        
+         let cart = []
+         btn.addEventListener('click',function(){
+            let sum = 0;
+            let items = item.value.trim()
+            let prices = Number(price.value.trim())
+            if(items && price){
+              cart.push({items, prices}) 
+              item.value = ''
+              price.value = ''
+            }
+              wishList.innerHTML = ''
+              cart.forEach(function(item){
+                 let li = document.createElement('li')
+                 li.classList.add('list')
+                 li.innerHTML = `상품명 : ${item.items} 가격 : ${item.prices}`
+                 wishList.appendChild(li)
+                 sum += item.prices
+              })
+
+              total.innerHTML = `${sum.toLocaleString()}원`
+         })
+      </script>
+</body>
+</html>

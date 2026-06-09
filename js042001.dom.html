@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <style>
+
+
+    </style>
+
+</head>
+<body>
+   <!-- //페스워드받으면 헬로우환영합니다틀리면틀렸습니다나왔으면좋겠습니다 -->
+
+
+    <label for = "pass"> 패스워드 : </label> <input id="pass" type='password' placeholder ='패스워드를 입력하세요'/>
+    <button id = "btn">  확인 </button>
+    <div id = "dis">환영합니다 또는 패스워드가 틀립니다라는 표시 공간입니다 </div>
+
+    <script>
+
+    let pass = document.getElementById('pass')
+    let btn = document.getElementById('btn')
+    let dis = document.getElementById('dis')
+    
+    btn.onclick = function(){
+        if(pass.value == 'hello'){
+           dis.innerHTML = '<strong>환영합니다</strong>'
+        }else{
+           dis.innerHTML = '패스워드를 다시 입력해주세요'
+        }
+    }
+
+    </script>
+
+</body>
+</html>

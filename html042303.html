@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+*{margin: 0; padding: 0;}
+
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 900px;
+}
+tr,td,th{
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+}
+th{
+    background-color: red;
+    color: white;
+}
+.rde{
+    color: red;
+    font-weight: 600px;
+}
+</style>
+
+</head>
+
+<body>
+    <table>
+
+        <tr>
+        <th colspan="2">구분</th>
+        <th>대상</th>
+        <th>할인율</th>
+        <th>비고</th>
+        </tr>
+
+        <tr>
+            <td colspan="2">조기신청할인</td>
+            <td>2026년</td>
+            <td class="rde">20%</td>
+            <td rowspan="3" class="rde">최대할인율30%</td>
+        </tr>
+
+        <tr>
+            <td rowspan="2">추가할인율</td>
+            <td>학생</td>
+            <td>학생()</td>
+            <td class="rde">%</td>
+        </tr>
+
+        <tr>
+            <td>기참가</td>
+            <td>1회이상참가자</td>
+            <td class="rde">%</td>
+        </tr>
+        
+    </table>
+</body>
+</html>

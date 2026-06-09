@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery 스크롤 이벤트</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+    header{
+        width: 100%;
+        height: 70px;
+
+        position: fixed;
+        left: 0; top: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+ 
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+
+        transition: all 0.4s;/* 자연스럽게변해라 */
+        background-color: transparent;/* 처음헤더는색상을주지않음투명 */
+
+    }
+    header.on{
+        height: 60px;
+        backdrop-filter: blur(20px);/* 그냥투명함이아니라요즘유행 */
+        background-color: rgb(71, 43, 134);
+    }
+    section{
+        width: 100%;
+        height: 100vh;
+        display: flex;/*sec1,2,3들글자들  */
+        justify-content: center;
+        align-items: center;
+        font-size: 70px;
+
+    }
+    .sec1{background-color: aqua;}
+    .sec2{background-color: rgb(231, 211, 26);}
+    .sec3{background-color: rgb(91, 59, 105);}
+
+    .topBtn{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+
+        position: fixed;
+        right: 50px;
+        bottom: 70px;
+
+        display: none;/* 일단안보여 */
+        /* justify-content: center;
+        align-items: center; */
+        text-align: center;
+        line-height: 50px;
+
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <!-- 
+    색션이바뀔때마다스크롤이바뀔때마다 
+    색션은공통적일때만하나만손대는걸로나머지는색션안에디아이비태그사용해서묶는다
+    $(window)화면전체
+     -->
+    <header> logo & navi </header>
+    <section class="sec1">
+      첫번째 화면입니다
+    </section>
+    <section class="sec2">
+      두번째 화면입니다
+    </section>
+    <section class="sec3">
+      세번째 화면입니다
+    </section>
+
+    <div class="topBtn">Top</div>
+    <script>
+      $(window).on('scroll',function(){
+        let scrTop = $(window).scrollTop();//제일처음이누구냐
+
+        if(scrTop > 80){
+            $('header').addClass('on')//내가가지고있는헤더가스크롤변화가있겠끔
+            $('.topBtn').fadeIn()//헤더온말고topbtn을데고들어와서내가원하는수치에애니메이션서서히보이게
+        }else{
+            $('header').removeClass('on')
+            $('.topBtn').fadeOut()//버튼이나타났다사라졌다
+        }
+        })
+
+        $('.topBtn').on('click',function(){
+            $('html,body').stop().animate({
+                  scrollTop : 0 //스크롤탑0일때강제로
+            },500)//기준을붙들고제일처음으로올라가라하면부드럽게움직여라
+        })
+
+    </script>
+</body>
+</html>

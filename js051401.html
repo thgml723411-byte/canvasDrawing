@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        label{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+   <!-- 
+  문구이름을 출력해서(5개)
+  문구를 클릭하면 문구이름과 가격이 출력()
+  총 가격의 합계 출력 
+  -->
+    <h2>문구</h2>
+
+    <input type="text" placeholder="이름을입력해주세요" id="name"/>
+
+    <div class="outBox">
+
+    <label>
+      <input type="radio" name="lang" value="노트">
+      노트
+    </label>
+
+    <label>
+      <input type="radio" name="lang" value="필통">
+      필통
+    </label>
+
+    <label>
+      <input type="radio" name="lang" value="볼펜">
+      볼펜
+    </label>
+
+    <label>
+      <input type="radio" name="lang" value="연필">
+      연필
+    </label>
+
+    <label>
+      <input type="radio" name="lang" value="지우개">
+      지우개
+    </label>
+
+         <button id="btn">확인</button>
+         <h2>가격</h2>
+         <div id="dis">원</div><br><br><br>
+         <h2>총 가격 합계</h2><br>
+         <div id="total">원</div><br><br><br>
+
+    </div>
+
+<script>
+ let name = document.querySelector('#name')
+ let btn = document.querySelector('#btn')
+ let dis = document.querySelector('#dis')
+ let total = document.querySelector('#total')
+ let langs = document.querySelectorAll('input[name="lang"]')
+
+ let Data = [
+    {lang : "노트",Price:5000},
+    {lang : "필통",Price:8000},
+    {lang : "볼펜",Price:6000},
+    {lang : "연필",Price:4000},
+    {lang : "지우개",Price:3000},
+ ]
+ let totalsum = 0;
+
+ let names = []
+ btn.addEventListener('click',function(){
+    langs.forEach(function(item){
+      if(item.checked){
+        Data.forEach(function(data){
+            if(item.value === data.lang){
+                data.Price
+            }
+        })
+        names.push(name.value)
+      }
+    })
+    dis.innerHTML=''
+    Data.forEach(function(item){
+    dis.innerHTML += `<div> ${item.lang} : ${item.Price}원 </div>`
+   })
+   let sum = 0 
+   Data.forEach(function(item){
+    sum += item.Price
+   })
+   total.innerHTML = sum + '원'
+   total.innerHTML = totalsum + '원'
+ })
+</script>
+</body>
+</html>

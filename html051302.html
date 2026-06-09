@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>스크롤 해결</title>
+
+    <link rel="stylesheet" href ="./reset.css">
+
+    <style>
+
+        section {
+
+            width: 100%;
+
+            height: 100vh;
+
+            padding: 100px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap:20px;
+
+        }
+
+
+ 
+
+        section:nth-child(1){
+
+            background-color: skyblue;
+
+        }
+
+        section:nth-child(2){
+
+            background-color: pink;
+
+        }
+
+        section:nth-child(3){
+
+            background-color: rgb(192, 255, 192);
+
+        }
+
+
+ 
+
+        .box {
+
+            width: 200px;
+
+            height: 100px;
+
+            border-radius: 10px;
+
+            background-color: white;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            transition: all 0.9s;
+
+            opacity: 0;
+
+        }
+
+
+ 
+
+     
+
+        .box.up { transform: translateY(150px); opacity: 0.1; }
+
+
+ 
+
+        .box.down { transform: translateY(-150px); opacity: 0.1; }
+
+
+ 
+
+        .box.left { transform: translateX(200px); opacity: 0.1; }
+
+
+ 
+
+        .box.right { transform: translateX(-200px); opacity: 0.1; }
+
+
+ 
+
+        .box.on { transform: translate(0, 0) ; opacity: 1; }
+
+
+ 
+
+    </style>
+
+</head>
+
+<body>
+
+    <section>
+
+        <div class="box up">과일</div>
+
+        <div class="box right">딸기</div>
+
+        <div class="box down">바나나</div>
+
+    </section>
+
+    <section>
+
+        <div class="box left">이름</div>
+
+        <div class="box down">홍길동</div>
+
+        <div class="box up">이순신</div>
+
+    </section>
+
+    <section>
+
+        <div class="box left">숫자</div>
+
+        <div class="box up">1</div>
+
+        <div class="box up">2</div>
+
+    </section>
+
+
+ 
+
+    <script>
+
+        let boxs = document.querySelectorAll(".box")
+
+        let observer = new IntersectionObserver(function(entries) {
+
+            entries.forEach(function(item) {
+
+                if (item.isIntersecting) {
+
+                    item.target.classList.add("on")
+
+                }
+
+            })
+
+        }, {
+
+            threshold: 0.2
+
+        })
+
+
+ 
+
+        boxs.forEach(function(item) {
+
+            observer.observe(item)
+
+        })
+
+    </script>
+
+</body>
+
+</html>

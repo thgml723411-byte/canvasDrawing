@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0;}
+
+        .outbox{
+            width: 250px;
+            height: 400px;
+            background-color: gray;
+        }
+        .imgbox{
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background-color: aqua;
+            background-image: url(./img/woman.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .txtbox{
+            width: 100%;
+            height: 200px;
+            background-color: rgb(225, 127, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .endbox{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 15%;
+            height: 30px;
+            background-color: rgb(12, 12, 12);
+            color: white;
+            text-align: center;
+            line-height: 35px;
+        }
+        h1{
+            margin-bottom: 15px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="outbox">
+        <div class="imgbox">
+            <div class="endbox">종료</div>
+        </div>
+        <div class="txtbox">
+        <h1>안녕하세요</h1><br>
+        <p>하하하</p>
+        <h2>허허허허</h2>
+        </div>
+    </div>
+</body>
+</html>
